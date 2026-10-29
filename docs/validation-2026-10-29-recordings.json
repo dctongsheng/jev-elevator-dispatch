@@ -1,0 +1,3103 @@
+{
+  "version": 1,
+  "createdAt": "2026-10-29T06:01:37.291Z",
+  "requestScope": "normalized-note-only",
+  "seeds": [
+    101,
+    102,
+    103,
+    104,
+    105,
+    106,
+    107,
+    108,
+    109,
+    110,
+    111,
+    112,
+    113,
+    114,
+    115,
+    116
+  ],
+  "simSeconds": 1200,
+  "requests": {
+    "visitors going to maternity": {
+      "input": {
+        "note": "visitors going to maternity",
+        "from": 7,
+        "to": 8
+      },
+      "response": {
+        "priority": "visitor",
+        "priorityConfidence": 0.9475145492186189,
+        "priorityProbabilities": {
+          "stat": 0.0014854786491566674,
+          "urgent": 0.008607874361215627,
+          "routine": 0.029270735075663645,
+          "visitor": 0.9606359119139641
+        },
+        "load": "walking",
+        "loadConfidence": 0.9870441697500308,
+        "loadProbabilities": {
+          "bed": 0.002321497566554778,
+          "wheelchair": 0.0022935606564129054,
+          "cart": 0.0051018144645092285,
+          "walking": 0.9902831273125231
+        },
+        "exclusiveCar": 0,
+        "latencyMs": 451.726416,
+        "inputTokens": 463,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 448.548792,
+        "raw": {
+          "priority": "visitor",
+          "load": "walking",
+          "exclusiveCar": 0.003858227473039325
+        },
+        "adjustments": [],
+        "source": "model",
+        "cache": "miss"
+      },
+      "elapsedMs": 451.79687500000006
+    },
+    "nurse going to cafeteria": {
+      "input": {
+        "note": "nurse going to cafeteria",
+        "from": 8,
+        "to": 2
+      },
+      "response": {
+        "priority": "routine",
+        "priorityConfidence": 0.9947725023559643,
+        "priorityProbabilities": {
+          "stat": 0.0005894355259635882,
+          "urgent": 0.0022105243429127895,
+          "routine": 0.9960793767669732,
+          "visitor": 0.0011206633641504442
+        },
+        "load": "walking",
+        "loadConfidence": 0.9730553556377899,
+        "loadProbabilities": {
+          "bed": 0.0006009958297774956,
+          "wheelchair": 0.001242914799854772,
+          "cart": 0.018364572642025366,
+          "walking": 0.9797915167283424
+        },
+        "exclusiveCar": 0,
+        "latencyMs": 386.432542,
+        "inputTokens": 463,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 385.3849160000001,
+        "raw": {
+          "priority": "routine",
+          "load": "walking",
+          "exclusiveCar": 0.0008189204604261272
+        },
+        "adjustments": [],
+        "source": "model",
+        "cache": "miss"
+      },
+      "elapsedMs": 386.4462910000001
+    },
+    "couple visiting a patient": {
+      "input": {
+        "note": "couple visiting a patient",
+        "from": 6,
+        "to": 9
+      },
+      "response": {
+        "priority": "visitor",
+        "priorityConfidence": 0.94084279275372,
+        "priorityProbabilities": {
+          "stat": 0.0024322744490327757,
+          "urgent": 0.01182538276995233,
+          "routine": 0.030110248215724878,
+          "visitor": 0.95563209456529
+        },
+        "load": "walking",
+        "loadConfidence": 0.994530462802981,
+        "loadProbabilities": {
+          "bed": 0.0013469184878771095,
+          "wheelchair": 0.0011930178803026528,
+          "cart": 0.001562216529584475,
+          "walking": 0.9958978471022357
+        },
+        "exclusiveCar": 0,
+        "latencyMs": 365.6707090000001,
+        "inputTokens": 463,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 365.36299999999994,
+        "raw": {
+          "priority": "visitor",
+          "load": "walking",
+          "exclusiveCar": 0.0015112438259943023
+        },
+        "adjustments": [],
+        "source": "model",
+        "cache": "miss"
+      },
+      "elapsedMs": 365.6885420000001
+    },
+    "code blue team heading up": {
+      "input": {
+        "note": "code blue team heading up",
+        "from": 4,
+        "to": 6
+      },
+      "response": {
+        "priority": "stat",
+        "priorityConfidence": 0.8581604474400715,
+        "priorityProbabilities": {
+          "stat": 0.8936203355800536,
+          "urgent": 0.01798241970271471,
+          "routine": 0.08612409278371339,
+          "visitor": 0.0022731519335183613
+        },
+        "load": "walking",
+        "loadConfidence": 0.9671306710915797,
+        "loadProbabilities": {
+          "bed": 0.007632979856185143,
+          "wheelchair": 0.0027307903021087745,
+          "cart": 0.014288226523021298,
+          "walking": 0.9753480033186848
+        },
+        "exclusiveCar": 1,
+        "latencyMs": 365.5217500000001,
+        "inputTokens": 463,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 365.19683399999985,
+        "raw": {
+          "priority": "stat",
+          "load": "walking",
+          "exclusiveCar": 0.02952223141255654
+        },
+        "adjustments": [
+          "dedicated car requires explicit evidence or a strong model signal"
+        ],
+        "source": "model+guardrails",
+        "cache": "miss"
+      },
+      "elapsedMs": 365.527875
+    },
+    "stat troponin sample to lab": {
+      "input": {
+        "note": "stat troponin sample to lab",
+        "from": 4,
+        "to": 2
+      },
+      "response": {
+        "priority": "urgent",
+        "priorityConfidence": 0.6818548286018972,
+        "priorityProbabilities": {
+          "stat": 0.07104336494910841,
+          "urgent": 0.7613911214514228,
+          "routine": 0.16607148999640145,
+          "visitor": 0.0014940236030672556
+        },
+        "load": "walking",
+        "loadConfidence": 0.9114146677396878,
+        "loadProbabilities": {
+          "bed": 0.0073593330284859,
+          "wheelchair": 0.005137586107179636,
+          "cart": 0.05394208005956861,
+          "walking": 0.9335610008047659
+        },
+        "exclusiveCar": 0,
+        "latencyMs": 391.10529199999996,
+        "inputTokens": 469,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 390.8028750000001,
+        "raw": {
+          "priority": "urgent",
+          "load": "walking",
+          "exclusiveCar": 0.004975129675952016
+        },
+        "adjustments": [],
+        "source": "model",
+        "cache": "miss"
+      },
+      "elapsedMs": 391.116708
+    },
+    "rapid response team responding": {
+      "input": {
+        "note": "rapid response team responding",
+        "from": 4,
+        "to": 9
+      },
+      "response": {
+        "priority": "stat",
+        "priorityConfidence": 0.8917759397644515,
+        "priorityProbabilities": {
+          "stat": 0.9188319548233386,
+          "urgent": 0.024489700032573523,
+          "routine": 0.055184897027058324,
+          "visitor": 0.0014934481170295938
+        },
+        "load": "walking",
+        "loadConfidence": 0.9712374159230026,
+        "loadProbabilities": {
+          "bed": 0.005342019827407779,
+          "wheelchair": 0.003233740899403622,
+          "cart": 0.012996177330936618,
+          "walking": 0.978428061942252
+        },
+        "exclusiveCar": 1,
+        "latencyMs": 479.9412500000003,
+        "inputTokens": 460,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 479.71500000000015,
+        "raw": {
+          "priority": "stat",
+          "load": "walking",
+          "exclusiveCar": 0.017001492280597223
+        },
+        "adjustments": [
+          "dedicated car requires explicit evidence or a strong model signal"
+        ],
+        "source": "model+guardrails",
+        "cache": "miss"
+      },
+      "elapsedMs": 479.9559170000002
+    },
+    "family of 4 going to the cafeteria": {
+      "input": {
+        "note": "family of 4 going to the cafeteria",
+        "from": 7,
+        "to": 1
+      },
+      "response": {
+        "priority": "visitor",
+        "priorityConfidence": 0.37588713634289145,
+        "priorityProbabilities": {
+          "stat": 0.0007581060190422365,
+          "urgent": 0.0014905859066065236,
+          "routine": 0.4658359558171826,
+          "visitor": 0.5319153522571686
+        },
+        "load": "walking",
+        "loadConfidence": 0.9579018646863776,
+        "loadProbabilities": {
+          "bed": 0.0016819285776991624,
+          "wheelchair": 0.002679663029848073,
+          "cart": 0.027212009877669485,
+          "walking": 0.9684263985147832
+        },
+        "exclusiveCar": 0,
+        "latencyMs": 462.19841700000006,
+        "inputTokens": 472,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 461.9994999999999,
+        "raw": {
+          "priority": "visitor",
+          "load": "walking",
+          "exclusiveCar": 0.0016623821021269083
+        },
+        "adjustments": [],
+        "source": "model",
+        "cache": "miss"
+      },
+      "elapsedMs": 462.2139169999996
+    },
+    "bed transport er to icu, pt intubated, need to go now": {
+      "input": {
+        "note": "Bed transport ER to ICU, pt intubated, need to go NOW",
+        "from": 1,
+        "to": 3
+      },
+      "response": {
+        "priority": "stat",
+        "priorityConfidence": 0.8936374652107166,
+        "priorityProbabilities": {
+          "stat": 0.9202280989080375,
+          "urgent": 0.06925243917476118,
+          "routine": 0.009791643746017053,
+          "visitor": 0.000727818171184304
+        },
+        "load": "bed",
+        "loadConfidence": 0.9776640490276817,
+        "loadProbabilities": {
+          "bed": 0.9832480367707612,
+          "wheelchair": 0.001168763999693759,
+          "cart": 0.0058142723357830295,
+          "walking": 0.009768926893762029
+        },
+        "exclusiveCar": 1,
+        "latencyMs": 506.83795899999996,
+        "inputTokens": 493,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 506.5435000000002,
+        "raw": {
+          "priority": "stat",
+          "load": "bed",
+          "exclusiveCar": 0.21568194480725777
+        },
+        "adjustments": [
+          "dedicated car requires explicit evidence or a strong model signal"
+        ],
+        "source": "model+guardrails",
+        "cache": "miss"
+      },
+      "elapsedMs": 506.8553750000001
+    },
+    "wheelchair pt going down for x-ray": {
+      "input": {
+        "note": "wheelchair pt going down for x-ray",
+        "from": 8,
+        "to": 1
+      },
+      "response": {
+        "priority": "urgent",
+        "priorityConfidence": 0.6941944587020474,
+        "priorityProbabilities": {
+          "stat": 0.0326249336544122,
+          "urgent": 0.7706458440265356,
+          "routine": 0.19333605475980384,
+          "visitor": 0.0033931675592482873
+        },
+        "load": "wheelchair",
+        "loadConfidence": 0.9894830990114004,
+        "loadProbabilities": {
+          "bed": 0.002748343118902956,
+          "wheelchair": 0.9921123242585503,
+          "cart": 0.0018280051762045238,
+          "walking": 0.0033113274463422403
+        },
+        "exclusiveCar": 0,
+        "latencyMs": 733.6250420000001,
+        "inputTokens": 472,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 733.5264999999995,
+        "raw": {
+          "priority": "urgent",
+          "load": "wheelchair",
+          "exclusiveCar": 0.024025606877667256
+        },
+        "adjustments": [],
+        "source": "model",
+        "cache": "miss"
+      },
+      "elapsedMs": 733.6428749999995
+    },
+    "bed transfer from icu step-down": {
+      "input": {
+        "note": "bed transfer from ICU step-down",
+        "from": 3,
+        "to": 6
+      },
+      "response": {
+        "priority": "urgent",
+        "priorityConfidence": 0.7230426555315416,
+        "priorityProbabilities": {
+          "stat": 0.027342292879675045,
+          "urgent": 0.7922819916486562,
+          "routine": 0.17828830584844035,
+          "visitor": 0.002087409623228464
+        },
+        "load": "bed",
+        "loadConfidence": 0.9118059699082184,
+        "loadProbabilities": {
+          "bed": 0.9338544774311638,
+          "wheelchair": 0.0034991369232255714,
+          "cart": 0.019754387792751373,
+          "walking": 0.04289199785285925
+        },
+        "exclusiveCar": 1,
+        "latencyMs": 319.80516700000044,
+        "inputTokens": 466,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 319.69079200000033,
+        "raw": {
+          "priority": "urgent",
+          "load": "bed",
+          "exclusiveCar": 0.016960069941664473
+        },
+        "adjustments": [
+          "dedicated car requires explicit evidence or a strong model signal"
+        ],
+        "source": "model+guardrails",
+        "cache": "miss"
+      },
+      "elapsedMs": 319.8145000000004
+    },
+    "central supply delivery, sterile packs": {
+      "input": {
+        "note": "central supply delivery, sterile packs",
+        "from": 0,
+        "to": 3
+      },
+      "response": {
+        "priority": "routine",
+        "priorityConfidence": 0.9121148794914643,
+        "priorityProbabilities": {
+          "stat": 0.007412327344527244,
+          "urgent": 0.056516024779445076,
+          "routine": 0.9340861596185982,
+          "visitor": 0.0019854882574295513
+        },
+        "load": "cart",
+        "loadConfidence": 0.6604370908330782,
+        "loadProbabilities": {
+          "bed": 0.0031252671178845547,
+          "wheelchair": 0.0036392838439287646,
+          "cart": 0.7453278181248086,
+          "walking": 0.247907630913378
+        },
+        "exclusiveCar": 0,
+        "latencyMs": 465.66220799999974,
+        "inputTokens": 466,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 465.60216599999967,
+        "raw": {
+          "priority": "routine",
+          "load": "cart",
+          "exclusiveCar": 0.010566179934831634
+        },
+        "adjustments": [],
+        "source": "model",
+        "cache": "miss"
+      },
+      "elapsedMs": 465.6689579999993
+    },
+    "staff heading to break room": {
+      "input": {
+        "note": "staff heading to break room",
+        "from": 4,
+        "to": 9
+      },
+      "response": {
+        "priority": "routine",
+        "priorityConfidence": 0.9914262324350182,
+        "priorityProbabilities": {
+          "stat": 0.0015028231416421263,
+          "urgent": 0.003111404407221671,
+          "routine": 0.9935696743262636,
+          "visitor": 0.0018160981248725484
+        },
+        "load": "walking",
+        "loadConfidence": 0.9876092010406482,
+        "loadProbabilities": {
+          "bed": 0.0007180102144845912,
+          "wheelchair": 0.001165191814890206,
+          "cart": 0.0074098971901389275,
+          "walking": 0.9907069007804862
+        },
+        "exclusiveCar": 0,
+        "latencyMs": 321.5074999999997,
+        "inputTokens": 463,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 321.31291599999986,
+        "raw": {
+          "priority": "routine",
+          "load": "walking",
+          "exclusiveCar": 0.0012123690859911118
+        },
+        "adjustments": [],
+        "source": "model",
+        "cache": "miss"
+      },
+      "elapsedMs": 321.5192079999997
+    },
+    "pt w/ c diff going to radiology in wheelchair": {
+      "input": {
+        "note": "pt w/ C diff going to radiology in wheelchair",
+        "from": 7,
+        "to": 2
+      },
+      "response": {
+        "priority": "urgent",
+        "priorityConfidence": 0.5024006933430564,
+        "priorityProbabilities": {
+          "stat": 0.06363208263990315,
+          "urgent": 0.6268005200072923,
+          "routine": 0.30227738934538223,
+          "visitor": 0.007290008007422421
+        },
+        "load": "wheelchair",
+        "loadConfidence": 0.9948720513035639,
+        "loadProbabilities": {
+          "bed": 0.0011118414116440638,
+          "wheelchair": 0.9961540384776729,
+          "cart": 0.0008871739914342408,
+          "walking": 0.0018469461192487924
+        },
+        "exclusiveCar": 0,
+        "latencyMs": 352.4275829999997,
+        "inputTokens": 481,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 352.2667499999998,
+        "raw": {
+          "priority": "urgent",
+          "load": "wheelchair",
+          "exclusiveCar": 0.009091307242241591
+        },
+        "adjustments": [],
+        "source": "model",
+        "cache": "miss"
+      },
+      "elapsedMs": 352.45016699999996
+    },
+    "resident going to pharmacy": {
+      "input": {
+        "note": "resident going to pharmacy",
+        "from": 2,
+        "to": 6
+      },
+      "response": {
+        "priority": "routine",
+        "priorityConfidence": 0.6612548074673069,
+        "priorityProbabilities": {
+          "stat": 0.0062939976603420275,
+          "urgent": 0.11410339462698445,
+          "routine": 0.7459411056004802,
+          "visitor": 0.13366150211219327
+        },
+        "load": "walking",
+        "loadConfidence": 0.9851018778935705,
+        "loadProbabilities": {
+          "bed": 0.0008778060596192175,
+          "wheelchair": 0.003389185967999782,
+          "cart": 0.006906599552203116,
+          "walking": 0.9888264084201779
+        },
+        "exclusiveCar": 0,
+        "latencyMs": 340.5380409999998,
+        "inputTokens": 460,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 340.3897079999997,
+        "raw": {
+          "priority": "routine",
+          "load": "walking",
+          "exclusiveCar": 0.0024863567956030625
+        },
+        "adjustments": [],
+        "source": "model",
+        "cache": "miss"
+      },
+      "elapsedMs": 340.56216700000004
+    },
+    "dad with stroller going to peds": {
+      "input": {
+        "note": "dad with stroller going to peds",
+        "from": 1,
+        "to": 9
+      },
+      "response": {
+        "priority": "visitor",
+        "priorityConfidence": 0.3297750976140054,
+        "priorityProbabilities": {
+          "stat": 0.006171161954436571,
+          "urgent": 0.06679897488247424,
+          "routine": 0.4296985399525851,
+          "visitor": 0.49733132321050405
+        },
+        "load": "walking",
+        "loadConfidence": 0.4664710332291386,
+        "loadProbabilities": {
+          "bed": 0.0022299994607397336,
+          "wheelchair": 0.011702941185803391,
+          "cart": 0.38621378443160287,
+          "walking": 0.5998532749218539
+        },
+        "exclusiveCar": 0,
+        "latencyMs": 354.2513749999998,
+        "inputTokens": 472,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 354.0251249999992,
+        "raw": {
+          "priority": "visitor",
+          "load": "walking",
+          "exclusiveCar": 0.0027472351414151177
+        },
+        "adjustments": [],
+        "source": "model",
+        "cache": "miss"
+      },
+      "elapsedMs": 354.2788329999994
+    },
+    "droplet precautions pt to imaging, w/c": {
+      "input": {
+        "note": "droplet precautions pt to imaging, w/c",
+        "from": 7,
+        "to": 2
+      },
+      "response": {
+        "priority": "urgent",
+        "priorityConfidence": 0.49304305465228654,
+        "priorityProbabilities": {
+          "stat": 0.038952357316876934,
+          "urgent": 0.3325022278666678,
+          "routine": 0.6197822909892149,
+          "visitor": 0.008763123827240451
+        },
+        "load": "wheelchair",
+        "loadConfidence": 0.940422906091707,
+        "loadProbabilities": {
+          "bed": 0.005622870692177159,
+          "wheelchair": 0.9553171795687803,
+          "cart": 0.008448302102640864,
+          "walking": 0.03061164763640171
+        },
+        "exclusiveCar": 0,
+        "latencyMs": 357.60149999999976,
+        "inputTokens": 472,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 357.398459,
+        "raw": {
+          "priority": "routine",
+          "load": "wheelchair",
+          "exclusiveCar": 0.026632819611300613
+        },
+        "adjustments": [
+          "priority: routine → urgent"
+        ],
+        "source": "model+guardrails",
+        "cache": "miss"
+      },
+      "elapsedMs": 357.6216250000007
+    },
+    "sterile instrument trays for or restock": {
+      "input": {
+        "note": "sterile instrument trays for OR restock",
+        "from": 0,
+        "to": 4
+      },
+      "response": {
+        "priority": "routine",
+        "priorityConfidence": 0.9158567980804572,
+        "priorityProbabilities": {
+          "stat": 0.0055669705515318186,
+          "urgent": 0.055746766107591286,
+          "routine": 0.9368925985603429,
+          "visitor": 0.0017936647805339727
+        },
+        "load": "cart",
+        "loadConfidence": 0.40075808501950316,
+        "loadProbabilities": {
+          "bed": 0.00246102780539808,
+          "wheelchair": 0.0030922068196808108,
+          "cart": 0.5505685637646274,
+          "walking": 0.4438782016102938
+        },
+        "exclusiveCar": 0,
+        "latencyMs": 364.82124999999996,
+        "inputTokens": 472,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 364.71887499999957,
+        "raw": {
+          "priority": "routine",
+          "load": "cart",
+          "exclusiveCar": 0.0052664289725215686
+        },
+        "adjustments": [],
+        "source": "model",
+        "cache": "miss"
+      },
+      "elapsedMs": 364.8418329999995
+    },
+    "moving post-op pt to icu bed": {
+      "input": {
+        "note": "moving post-op pt to ICU bed",
+        "from": 6,
+        "to": 1
+      },
+      "response": {
+        "priority": "urgent",
+        "priorityConfidence": 0.7951034917696839,
+        "priorityProbabilities": {
+          "stat": 0.046017088516306356,
+          "urgent": 0.8463276188272629,
+          "routine": 0.1060117256685878,
+          "visitor": 0.00164356698784295
+        },
+        "load": "bed",
+        "loadConfidence": 0.7319446301559962,
+        "loadProbabilities": {
+          "bed": 0.7989584726169972,
+          "wheelchair": 0.0034216888768849674,
+          "cart": 0.013964093403046112,
+          "walking": 0.18365574510307184
+        },
+        "exclusiveCar": 1,
+        "latencyMs": 335.8859590000002,
+        "inputTokens": 469,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 335.69245800000044,
+        "raw": {
+          "priority": "urgent",
+          "load": "bed",
+          "exclusiveCar": 0.05511456103183514
+        },
+        "adjustments": [
+          "dedicated car requires explicit evidence or a strong model signal"
+        ],
+        "source": "model+guardrails",
+        "cache": "miss"
+      },
+      "elapsedMs": 335.89545799999996
+    },
+    "food service cart": {
+      "input": {
+        "note": "food service cart",
+        "from": 9,
+        "to": 7
+      },
+      "response": {
+        "priority": "routine",
+        "priorityConfidence": 0.9656799657608733,
+        "priorityProbabilities": {
+          "stat": 0.004077827133611626,
+          "urgent": 0.017232282698762934,
+          "routine": 0.974259974320655,
+          "visitor": 0.004429915846970447
+        },
+        "load": "cart",
+        "loadConfidence": 0.9866986308992508,
+        "loadProbabilities": {
+          "bed": 0.000373715858122814,
+          "wheelchair": 0.0005774372855259436,
+          "cart": 0.9900239731744381,
+          "walking": 0.009024873681913135
+        },
+        "exclusiveCar": 0,
+        "latencyMs": 346.02220899999975,
+        "inputTokens": 457,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 345.8155829999996,
+        "raw": {
+          "priority": "routine",
+          "load": "cart",
+          "exclusiveCar": 0.001042785983957869
+        },
+        "adjustments": [],
+        "source": "model",
+        "cache": "miss"
+      },
+      "elapsedMs": 346.03358300000036
+    },
+    "pt in wheelchair to dialysis appt": {
+      "input": {
+        "note": "pt in wheelchair to dialysis appt",
+        "from": 6,
+        "to": 1
+      },
+      "response": {
+        "priority": "urgent",
+        "priorityConfidence": 0.6264872932747019,
+        "priorityProbabilities": {
+          "stat": 0.01669673576806347,
+          "urgent": 0.7198654699560264,
+          "routine": 0.2551390945557292,
+          "visitor": 0.008298699720180863
+        },
+        "load": "wheelchair",
+        "loadConfidence": 0.9950939359811494,
+        "loadProbabilities": {
+          "bed": 0.0006765130269071313,
+          "wheelchair": 0.996320451985862,
+          "cart": 0.0012305858374979538,
+          "walking": 0.0017724491497328832
+        },
+        "exclusiveCar": 0,
+        "latencyMs": 344.40229199999976,
+        "inputTokens": 472,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 344.2310000000007,
+        "raw": {
+          "priority": "urgent",
+          "load": "wheelchair",
+          "exclusiveCar": 0.006983888352364562
+        },
+        "adjustments": [],
+        "source": "model",
+        "cache": "miss"
+      },
+      "elapsedMs": 344.41020800000024
+    },
+    "trauma pt arrived, bed to or with team, go now": {
+      "input": {
+        "note": "trauma pt arrived, bed to OR with team, go now",
+        "from": 1,
+        "to": 3
+      },
+      "response": {
+        "priority": "stat",
+        "priorityConfidence": 0.9496971006417221,
+        "priorityProbabilities": {
+          "stat": 0.9622728254812916,
+          "urgent": 0.033809350298590744,
+          "routine": 0.0036602102515860538,
+          "visitor": 0.0002576139685316022
+        },
+        "load": "bed",
+        "loadConfidence": 0.8313145229552932,
+        "loadProbabilities": {
+          "bed": 0.8734858922164699,
+          "wheelchair": 0.003233071921831127,
+          "cart": 0.013065395022110923,
+          "walking": 0.11021564083958807
+        },
+        "exclusiveCar": 1,
+        "latencyMs": 352.3780000000006,
+        "inputTokens": 487,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 352.2554170000003,
+        "raw": {
+          "priority": "stat",
+          "load": "bed",
+          "exclusiveCar": 0.04442877460010583
+        },
+        "adjustments": [
+          "dedicated car requires explicit evidence or a strong model signal"
+        ],
+        "source": "model+guardrails",
+        "cache": "miss"
+      },
+      "elapsedMs": 352.3874169999999
+    },
+    "visitor to oncology": {
+      "input": {
+        "note": "visitor to oncology",
+        "from": 8,
+        "to": 9
+      },
+      "response": {
+        "priority": "visitor",
+        "priorityConfidence": 0.9818410255561062,
+        "priorityProbabilities": {
+          "stat": 0.0006791330877561876,
+          "urgent": 0.0027905861126536133,
+          "routine": 0.010149511632510506,
+          "visitor": 0.9863807691670796
+        },
+        "load": "walking",
+        "loadConfidence": 0.9942454587877622,
+        "loadProbabilities": {
+          "bed": 0.0010794617461964214,
+          "wheelchair": 0.0016538729145177903,
+          "cart": 0.001582571248464252,
+          "walking": 0.9956840940908216
+        },
+        "exclusiveCar": 0,
+        "latencyMs": 330.3454590000001,
+        "inputTokens": 460,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 330.1759579999998,
+        "raw": {
+          "priority": "visitor",
+          "load": "walking",
+          "exclusiveCar": 0.002220879853948921
+        },
+        "adjustments": [],
+        "source": "model",
+        "cache": "miss"
+      },
+      "elapsedMs": 330.353000000001
+    },
+    "trauma pt on stretcher, straight to or": {
+      "input": {
+        "note": "trauma pt on stretcher, straight to OR",
+        "from": 1,
+        "to": 4
+      },
+      "response": {
+        "priority": "stat",
+        "priorityConfidence": 0.9514694111427984,
+        "priorityProbabilities": {
+          "stat": 0.9636020583570988,
+          "urgent": 0.030709461199343924,
+          "routine": 0.005405513160089183,
+          "visitor": 0.00028296728346815587
+        },
+        "load": "bed",
+        "loadConfidence": 0.9902430788561349,
+        "loadProbabilities": {
+          "bed": 0.9926823091421012,
+          "wheelchair": 0.0011671503402476894,
+          "cart": 0.0034517286199947914,
+          "walking": 0.0026988118976563583
+        },
+        "exclusiveCar": 1,
+        "latencyMs": 363.5552919999991,
+        "inputTokens": 478,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 363.30595899999935,
+        "raw": {
+          "priority": "stat",
+          "load": "bed",
+          "exclusiveCar": 0.06943911057291764
+        },
+        "adjustments": [
+          "dedicated car requires explicit evidence or a strong model signal"
+        ],
+        "source": "model+guardrails",
+        "cache": "miss"
+      },
+      "elapsedMs": 363.56945799999994
+    },
+    "blood cultures to lab asap": {
+      "input": {
+        "note": "blood cultures to lab asap",
+        "from": 5,
+        "to": 2
+      },
+      "response": {
+        "priority": "urgent",
+        "priorityConfidence": 0.8641669083583512,
+        "priorityProbabilities": {
+          "stat": 0.06771816700929026,
+          "urgent": 0.8981251812687634,
+          "routine": 0.033314471475456076,
+          "visitor": 0.0008421802464902966
+        },
+        "load": "walking",
+        "loadConfidence": 0.9474746006136412,
+        "loadProbabilities": {
+          "bed": 0.004646784036459107,
+          "wheelchair": 0.002802379508622697,
+          "cart": 0.031944885994687346,
+          "walking": 0.9606059504602309
+        },
+        "exclusiveCar": 0,
+        "latencyMs": 342.53900000000067,
+        "inputTokens": 463,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 342.4070419999989,
+        "raw": {
+          "priority": "urgent",
+          "load": "walking",
+          "exclusiveCar": 0.013868954543523
+        },
+        "adjustments": [],
+        "source": "model",
+        "cache": "miss"
+      },
+      "elapsedMs": 342.5464170000014
+    },
+    "biohazard waste bins going down": {
+      "input": {
+        "note": "biohazard waste bins going down",
+        "from": 6,
+        "to": 0
+      },
+      "response": {
+        "priority": "routine",
+        "priorityConfidence": 0.9734457050770001,
+        "priorityProbabilities": {
+          "stat": 0.0064399930798175395,
+          "urgent": 0.012197992683318318,
+          "routine": 0.9800842788077501,
+          "visitor": 0.0012777354291140226
+        },
+        "load": "cart",
+        "loadConfidence": 0.776576539901371,
+        "loadProbabilities": {
+          "bed": 0.003721196681923914,
+          "wheelchair": 0.002738441769744877,
+          "cart": 0.8324324049260282,
+          "walking": 0.16110795662230304
+        },
+        "exclusiveCar": 0,
+        "latencyMs": 346.9697499999984,
+        "inputTokens": 469,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 346.7987919999996,
+        "raw": {
+          "priority": "routine",
+          "load": "cart",
+          "exclusiveCar": 0.024543791917760346
+        },
+        "adjustments": [],
+        "source": "model",
+        "cache": "miss"
+      },
+      "elapsedMs": 346.97550000000047
+    },
+    "tech going back to unit": {
+      "input": {
+        "note": "tech going back to unit",
+        "from": 1,
+        "to": 9
+      },
+      "response": {
+        "priority": "routine",
+        "priorityConfidence": 0.8707804115607239,
+        "priorityProbabilities": {
+          "stat": 0.01824072003799843,
+          "urgent": 0.069612047308576,
+          "routine": 0.9030853086705429,
+          "visitor": 0.009061923982882688
+        },
+        "load": "walking",
+        "loadConfidence": 0.7691257518465527,
+        "loadProbabilities": {
+          "bed": 0.027966504860168804,
+          "wheelchair": 0.03350517337746999,
+          "cart": 0.11168400787744676,
+          "walking": 0.8268443138849145
+        },
+        "exclusiveCar": 0,
+        "latencyMs": 353.32524999999987,
+        "inputTokens": 463,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 353.2179580000011,
+        "raw": {
+          "priority": "routine",
+          "load": "walking",
+          "exclusiveCar": 0.008953175142612155
+        },
+        "adjustments": [],
+        "source": "model",
+        "cache": "miss"
+      },
+      "elapsedMs": 353.3317909999987
+    },
+    "soiled utility cart to basement": {
+      "input": {
+        "note": "soiled utility cart to basement",
+        "from": 4,
+        "to": 0
+      },
+      "response": {
+        "priority": "routine",
+        "priorityConfidence": 0.9751446133866749,
+        "priorityProbabilities": {
+          "stat": 0.0019848745298481243,
+          "urgent": 0.01486774955904401,
+          "routine": 0.9813584600400062,
+          "visitor": 0.0017889158711016998
+        },
+        "load": "cart",
+        "loadConfidence": 0.9896720113858334,
+        "loadProbabilities": {
+          "bed": 0.0003357349471204634,
+          "wheelchair": 0.0004474917243075314,
+          "cart": 0.9922540085393751,
+          "walking": 0.0069627647891970105
+        },
+        "exclusiveCar": 0,
+        "latencyMs": 352.7687499999993,
+        "inputTokens": 466,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 352.6208339999994,
+        "raw": {
+          "priority": "routine",
+          "load": "cart",
+          "exclusiveCar": 0.0026168074675980155
+        },
+        "adjustments": [],
+        "source": "model",
+        "cache": "miss"
+      },
+      "elapsedMs": 352.77520800000093
+    },
+    "dirty linen cart to laundry": {
+      "input": {
+        "note": "dirty linen cart to laundry",
+        "from": 6,
+        "to": 0
+      },
+      "response": {
+        "priority": "routine",
+        "priorityConfidence": 0.9915543146947399,
+        "priorityProbabilities": {
+          "stat": 0.0005349655928213906,
+          "urgent": 0.005176059284869831,
+          "routine": 0.9936657360210549,
+          "visitor": 0.0006232391012538556
+        },
+        "load": "cart",
+        "loadConfidence": 0.982418523347492,
+        "loadProbabilities": {
+          "bed": 0.0003505312204735395,
+          "wheelchair": 0.000413019545574596,
+          "cart": 0.986813892510619,
+          "walking": 0.012422556723332874
+        },
+        "exclusiveCar": 0,
+        "latencyMs": 347.3969589999997,
+        "inputTokens": 463,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 347.26179200000115,
+        "raw": {
+          "priority": "routine",
+          "load": "cart",
+          "exclusiveCar": 0.0015037394395396176
+        },
+        "adjustments": [],
+        "source": "model",
+        "cache": "miss"
+      },
+      "elapsedMs": 347.4042499999996
+    },
+    "wheelchair pt for scheduled ct, on contact precautions": {
+      "input": {
+        "note": "wheelchair pt for scheduled CT, on contact precautions",
+        "from": 7,
+        "to": 2
+      },
+      "response": {
+        "priority": "urgent",
+        "priorityConfidence": 0.8144408355731559,
+        "priorityProbabilities": {
+          "stat": 0.02075155886303667,
+          "urgent": 0.860830626679867,
+          "routine": 0.11587175683342714,
+          "visitor": 0.0025460576236691853
+        },
+        "load": "wheelchair",
+        "loadConfidence": 0.9919979426631081,
+        "loadProbabilities": {
+          "bed": 0.0013115088804988065,
+          "wheelchair": 0.9939984569973311,
+          "cart": 0.0020440369823095527,
+          "walking": 0.0026459971398604598
+        },
+        "exclusiveCar": 0,
+        "latencyMs": 363.20050000000083,
+        "inputTokens": 478,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 363.02658300000076,
+        "raw": {
+          "priority": "urgent",
+          "load": "wheelchair",
+          "exclusiveCar": 0.04288504602186957
+        },
+        "adjustments": [],
+        "source": "model",
+        "cache": "miss"
+      },
+      "elapsedMs": 363.2089999999989
+    },
+    "stemi pt headed to cath lab, bed + rn": {
+      "input": {
+        "note": "STEMI pt headed to cath lab, bed + RN",
+        "from": 1,
+        "to": 5
+      },
+      "response": {
+        "priority": "stat",
+        "priorityConfidence": 0.7795927302615725,
+        "priorityProbabilities": {
+          "stat": 0.8346945476961793,
+          "urgent": 0.13046945420803568,
+          "routine": 0.03351147830265438,
+          "visitor": 0.0013245197931305904
+        },
+        "load": "bed",
+        "loadConfidence": 0.5971220976128154,
+        "loadProbabilities": {
+          "bed": 0.6978415732096116,
+          "wheelchair": 0.00405310478367723,
+          "cart": 0.02415489171162245,
+          "walking": 0.2739504302950888
+        },
+        "exclusiveCar": 1,
+        "latencyMs": 360.1386249999996,
+        "inputTokens": 481,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 360.0582499999982,
+        "raw": {
+          "priority": "stat",
+          "load": "bed",
+          "exclusiveCar": 0.0474970165170728
+        },
+        "adjustments": [
+          "dedicated car requires explicit evidence or a strong model signal"
+        ],
+        "source": "model+guardrails",
+        "cache": "miss"
+      },
+      "elapsedMs": 360.14516600000024
+    },
+    "morgue transport, pt expired 0300": {
+      "input": {
+        "note": "morgue transport, pt expired 0300",
+        "from": 6,
+        "to": 0
+      },
+      "response": {
+        "priority": "routine",
+        "priorityConfidence": 0.6557019983470642,
+        "priorityProbabilities": {
+          "stat": 0.10239050738919547,
+          "urgent": 0.15184436579313168,
+          "routine": 0.7417764987602982,
+          "visitor": 0.003988628057374658
+        },
+        "load": "bed",
+        "loadConfidence": 0.8931060204590314,
+        "loadProbabilities": {
+          "bed": 0.9198295153442736,
+          "wheelchair": 0.0036366084260662864,
+          "cart": 0.019056372688769568,
+          "walking": 0.05747750354089056
+        },
+        "exclusiveCar": 1,
+        "latencyMs": 367.8901249999999,
+        "inputTokens": 484,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 367.74625000000015,
+        "raw": {
+          "priority": "routine",
+          "load": "bed",
+          "exclusiveCar": 0.06485943479435716
+        },
+        "adjustments": [
+          "dedicated car requires explicit evidence or a strong model signal"
+        ],
+        "source": "model+guardrails",
+        "cache": "miss"
+      },
+      "elapsedMs": 367.8967080000002
+    },
+    "code team en route w/ crash cart": {
+      "input": {
+        "note": "code team en route w/ crash cart",
+        "from": 1,
+        "to": 6
+      },
+      "response": {
+        "priority": "stat",
+        "priorityConfidence": 0.43031023422907805,
+        "priorityProbabilities": {
+          "stat": 0.328074705280878,
+          "urgent": 0.09394085796421865,
+          "routine": 0.5727326756718085,
+          "visitor": 0.005251761083094752
+        },
+        "load": "cart",
+        "loadConfidence": 0.9895443012467401,
+        "loadProbabilities": {
+          "bed": 0.0023236178253883467,
+          "wheelchair": 0.00046279083068446726,
+          "cart": 0.9921582259350551,
+          "walking": 0.005055365408872081
+        },
+        "exclusiveCar": 1,
+        "latencyMs": 348.6638750000002,
+        "inputTokens": 472,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 348.585833000001,
+        "raw": {
+          "priority": "routine",
+          "load": "cart",
+          "exclusiveCar": 0.006938984446360674
+        },
+        "adjustments": [
+          "priority: routine → stat",
+          "dedicated car requires explicit evidence or a strong model signal"
+        ],
+        "source": "model+guardrails",
+        "cache": "miss"
+      },
+      "elapsedMs": 348.6712090000001
+    },
+    "family heading upstairs": {
+      "input": {
+        "note": "family heading upstairs",
+        "from": 1,
+        "to": 0
+      },
+      "response": {
+        "priority": "visitor",
+        "priorityConfidence": 0.9231205673099655,
+        "priorityProbabilities": {
+          "stat": 0.001850928847913154,
+          "urgent": 0.006468139251953388,
+          "routine": 0.04934050641765936,
+          "visitor": 0.9423404254824741
+        },
+        "load": "walking",
+        "loadConfidence": 0.9217521414563022,
+        "loadProbabilities": {
+          "bed": 0.016102886482168895,
+          "wheelchair": 0.0161591412445018,
+          "cart": 0.026423866181102634,
+          "walking": 0.9413141060922267
+        },
+        "exclusiveCar": 0,
+        "latencyMs": 352.23091699999895,
+        "inputTokens": 457,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 352.1439169999994,
+        "raw": {
+          "priority": "visitor",
+          "load": "walking",
+          "exclusiveCar": 0.007241795327989644
+        },
+        "adjustments": [],
+        "source": "model",
+        "cache": "miss"
+      },
+      "elapsedMs": 352.2345409999998
+    },
+    "visitor looking for a patient room": {
+      "input": {
+        "note": "visitor looking for a patient room",
+        "from": 1,
+        "to": 5
+      },
+      "response": {
+        "priority": "visitor",
+        "priorityConfidence": 0.9559035479748524,
+        "priorityProbabilities": {
+          "stat": 0.002253973627507974,
+          "urgent": 0.006528030925691266,
+          "routine": 0.024290334465661402,
+          "visitor": 0.9669276609811394
+        },
+        "load": "walking",
+        "loadConfidence": 0.9895817056467143,
+        "loadProbabilities": {
+          "bed": 0.0020308341783566624,
+          "wheelchair": 0.0014793577185756997,
+          "cart": 0.004303528868031778,
+          "walking": 0.9921862792350358
+        },
+        "exclusiveCar": 0,
+        "latencyMs": 344.7519160000011,
+        "inputTokens": 466,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 344.59770799999933,
+        "raw": {
+          "priority": "visitor",
+          "load": "walking",
+          "exclusiveCar": 0.002229691679793575
+        },
+        "adjustments": [],
+        "source": "model",
+        "cache": "miss"
+      },
+      "elapsedMs": 344.7581670000018
+    },
+    "staff arriving for shift change": {
+      "input": {
+        "note": "staff arriving for shift change",
+        "from": 1,
+        "to": 2
+      },
+      "response": {
+        "priority": "routine",
+        "priorityConfidence": 0.9828250841374229,
+        "priorityProbabilities": {
+          "stat": 0.0035107300074155743,
+          "urgent": 0.007232084645107591,
+          "routine": 0.9871188131030671,
+          "visitor": 0.0021383722444096444
+        },
+        "load": "walking",
+        "loadConfidence": 0.9837427932309204,
+        "loadProbabilities": {
+          "bed": 0.0012032092837686353,
+          "wheelchair": 0.001256344111274361,
+          "cart": 0.009733351681766703,
+          "walking": 0.9878070949231903
+        },
+        "exclusiveCar": 0,
+        "latencyMs": 338.5268329999999,
+        "inputTokens": 463,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 338.389541999999,
+        "raw": {
+          "priority": "routine",
+          "load": "walking",
+          "exclusiveCar": 0.001360370260893457
+        },
+        "adjustments": [],
+        "source": "model",
+        "cache": "miss"
+      },
+      "elapsedMs": 338.53512500000033
+    },
+    "night shift nurse heading to unit": {
+      "input": {
+        "note": "night shift nurse heading to unit",
+        "from": 1,
+        "to": 0
+      },
+      "response": {
+        "priority": "routine",
+        "priorityConfidence": 0.980028136488528,
+        "priorityProbabilities": {
+          "stat": 0.005281360236418177,
+          "urgent": 0.008627279210412378,
+          "routine": 0.9850211023663961,
+          "visitor": 0.0010702581867733628
+        },
+        "load": "walking",
+        "loadConfidence": 0.9882763112418412,
+        "loadProbabilities": {
+          "bed": 0.0006780250369959552,
+          "wheelchair": 0.0007036018210867844,
+          "cart": 0.007411139710536334,
+          "walking": 0.991207233431381
+        },
+        "exclusiveCar": 0,
+        "latencyMs": 351.8976249999996,
+        "inputTokens": 466,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 351.73054199999933,
+        "raw": {
+          "priority": "routine",
+          "load": "walking",
+          "exclusiveCar": 0.0032776892721298814
+        },
+        "adjustments": [],
+        "source": "model",
+        "cache": "miss"
+      },
+      "elapsedMs": 351.9035839999997
+    },
+    "group of visitors": {
+      "input": {
+        "note": "group of visitors",
+        "from": 1,
+        "to": 4
+      },
+      "response": {
+        "priority": "visitor",
+        "priorityConfidence": 0.9804999374428967,
+        "priorityProbabilities": {
+          "stat": 0.0002797543616584734,
+          "urgent": 0.000994595222329187,
+          "routine": 0.013350697333839852,
+          "visitor": 0.9853749530821725
+        },
+        "load": "walking",
+        "loadConfidence": 0.9898473216456639,
+        "loadProbabilities": {
+          "bed": 0.0015911663818617139,
+          "wheelchair": 0.001284420899005476,
+          "cart": 0.004738921484884852,
+          "walking": 0.9923854912342479
+        },
+        "exclusiveCar": 0,
+        "latencyMs": 337.7467909999996,
+        "inputTokens": 457,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 337.6583329999994,
+        "raw": {
+          "priority": "visitor",
+          "load": "walking",
+          "exclusiveCar": 0.0008551596220704311
+        },
+        "adjustments": [],
+        "source": "model",
+        "cache": "miss"
+      },
+      "elapsedMs": 337.75345800000105
+    },
+    "discharge pt to lobby, w/c": {
+      "input": {
+        "note": "discharge pt to lobby, w/c",
+        "from": 6,
+        "to": 2
+      },
+      "response": {
+        "priority": "urgent",
+        "priorityConfidence": 0.30067271932910544,
+        "priorityProbabilities": {
+          "stat": 0.02194529243979377,
+          "urgent": 0.4755045394968291,
+          "routine": 0.45709766154425635,
+          "visitor": 0.04545250651912083
+        },
+        "load": "wheelchair",
+        "loadConfidence": 0.9657388346427555,
+        "loadProbabilities": {
+          "bed": 0.0020011004267394537,
+          "wheelchair": 0.9743041259820666,
+          "cart": 0.002920496915843122,
+          "walking": 0.020774276675350808
+        },
+        "exclusiveCar": 0,
+        "latencyMs": 321.96516599999995,
+        "inputTokens": 469,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 321.86141599999974,
+        "raw": {
+          "priority": "urgent",
+          "load": "wheelchair",
+          "exclusiveCar": 0.0016208208374557651
+        },
+        "adjustments": [],
+        "source": "model",
+        "cache": "miss"
+      },
+      "elapsedMs": 321.969916
+    },
+    "pt transfer to med-surg, bed": {
+      "input": {
+        "note": "pt transfer to med-surg, bed",
+        "from": 3,
+        "to": 7
+      },
+      "response": {
+        "priority": "urgent",
+        "priorityConfidence": 0.6457656308411042,
+        "priorityProbabilities": {
+          "stat": 0.013276463310207905,
+          "urgent": 0.7343242231308281,
+          "routine": 0.250001590402352,
+          "visitor": 0.002397723156612018
+        },
+        "load": "bed",
+        "loadConfidence": 0.6226781850828275,
+        "loadProbabilities": {
+          "bed": 0.7170086388121206,
+          "wheelchair": 0.005486063485077254,
+          "cart": 0.044026451049957886,
+          "walking": 0.23347884665284419
+        },
+        "exclusiveCar": 1,
+        "latencyMs": 372.1326250000002,
+        "inputTokens": 472,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 371.979292,
+        "raw": {
+          "priority": "urgent",
+          "load": "bed",
+          "exclusiveCar": 0.04126395275118838
+        },
+        "adjustments": [
+          "dedicated car requires explicit evidence or a strong model signal"
+        ],
+        "source": "model+guardrails",
+        "cache": "miss"
+      },
+      "elapsedMs": 372.1392080000005
+    },
+    "decedent to morgue": {
+      "input": {
+        "note": "decedent to morgue",
+        "from": 6,
+        "to": 0
+      },
+      "response": {
+        "priority": "routine",
+        "priorityConfidence": 0.9198878082840727,
+        "priorityProbabilities": {
+          "stat": 0.026613463044044806,
+          "urgent": 0.03121059636401055,
+          "routine": 0.9399158562130545,
+          "visitor": 0.00226008437889009
+        },
+        "load": "bed",
+        "loadConfidence": 0.5549293096971138,
+        "loadProbabilities": {
+          "bed": 0.28775378922061373,
+          "wheelchair": 0.007273854003592877,
+          "cart": 0.03877537450295806,
+          "walking": 0.6661969822728354
+        },
+        "exclusiveCar": 1,
+        "latencyMs": 336.72037499999897,
+        "inputTokens": 466,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 336.63016700000117,
+        "raw": {
+          "priority": "routine",
+          "load": "walking",
+          "exclusiveCar": 0.04492788350956634
+        },
+        "adjustments": [
+          "load: walking → bed",
+          "dedicated car requires explicit evidence or a strong model signal"
+        ],
+        "source": "model+guardrails",
+        "cache": "miss"
+      },
+      "elapsedMs": 336.7259579999991
+    },
+    "abg sample running to lab": {
+      "input": {
+        "note": "ABG sample running to lab",
+        "from": 5,
+        "to": 2
+      },
+      "response": {
+        "priority": "urgent",
+        "priorityConfidence": 0.3421436679274996,
+        "priorityProbabilities": {
+          "stat": 0.026112935839458607,
+          "urgent": 0.4652470336204718,
+          "routine": 0.5066077509456247,
+          "visitor": 0.0020322795944447986
+        },
+        "load": "walking",
+        "loadConfidence": 0.7126912203169421,
+        "loadProbabilities": {
+          "bed": 0.02857647217066221,
+          "wheelchair": 0.012825133124746216,
+          "cart": 0.17407997946688494,
+          "walking": 0.7845184152377066
+        },
+        "exclusiveCar": 0,
+        "latencyMs": 347.62562499999876,
+        "inputTokens": 466,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 347.49841600000036,
+        "raw": {
+          "priority": "routine",
+          "load": "walking",
+          "exclusiveCar": 0.007845210411026397
+        },
+        "adjustments": [
+          "priority: routine → urgent"
+        ],
+        "source": "model+guardrails",
+        "cache": "miss"
+      },
+      "elapsedMs": 347.6311249999999
+    },
+    "clean supply cart to floor": {
+      "input": {
+        "note": "clean supply cart to floor",
+        "from": 0,
+        "to": 8
+      },
+      "response": {
+        "priority": "routine",
+        "priorityConfidence": 0.9687397004804392,
+        "priorityProbabilities": {
+          "stat": 0.004104985013160501,
+          "urgent": 0.01730202136011116,
+          "routine": 0.9765547753603294,
+          "visitor": 0.002038218266398949
+        },
+        "load": "cart",
+        "loadConfidence": 0.9754823746726461,
+        "loadProbabilities": {
+          "bed": 0.00045448342104397144,
+          "wheelchair": 0.0007714658094835758,
+          "cart": 0.9816117810044845,
+          "walking": 0.017162269764987855
+        },
+        "exclusiveCar": 0,
+        "latencyMs": 342.9063750000005,
+        "inputTokens": 463,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 342.7740420000009,
+        "raw": {
+          "priority": "routine",
+          "load": "cart",
+          "exclusiveCar": 0.002366618323305441
+        },
+        "adjustments": [],
+        "source": "model",
+        "cache": "miss"
+      },
+      "elapsedMs": 342.9146669999991
+    },
+    "meal cart delivery": {
+      "input": {
+        "note": "meal cart delivery",
+        "from": 9,
+        "to": 7
+      },
+      "response": {
+        "priority": "routine",
+        "priorityConfidence": 0.9804652741724534,
+        "priorityProbabilities": {
+          "stat": 0.0012247265053689173,
+          "urgent": 0.010248474641966434,
+          "routine": 0.9853489556293401,
+          "visitor": 0.003177843223324489
+        },
+        "load": "cart",
+        "loadConfidence": 0.9849904774053625,
+        "loadProbabilities": {
+          "bed": 0.0004337290433347075,
+          "wheelchair": 0.000904332843383146,
+          "cart": 0.9887428580540218,
+          "walking": 0.009919080059260317
+        },
+        "exclusiveCar": 0,
+        "latencyMs": 346.809709000001,
+        "inputTokens": 457,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 346.65391699999964,
+        "raw": {
+          "priority": "routine",
+          "load": "cart",
+          "exclusiveCar": 0.0009601417688108211
+        },
+        "adjustments": [],
+        "source": "model",
+        "cache": "miss"
+      },
+      "elapsedMs": 346.8191659999993
+    },
+    "lunch trays going up": {
+      "input": {
+        "note": "lunch trays going up",
+        "from": 9,
+        "to": 6
+      },
+      "response": {
+        "priority": "routine",
+        "priorityConfidence": 0.9726656068822409,
+        "priorityProbabilities": {
+          "stat": 0.0025585393600056575,
+          "urgent": 0.01555863547982203,
+          "routine": 0.9794992051616807,
+          "visitor": 0.0023836199984917086
+        },
+        "load": "cart",
+        "loadConfidence": 0.8003173048475521,
+        "loadProbabilities": {
+          "bed": 0.0024950322026885715,
+          "wheelchair": 0.007413966896699137,
+          "cart": 0.8502379786356641,
+          "walking": 0.13985302226494814
+        },
+        "exclusiveCar": 0,
+        "latencyMs": 419.3495419999981,
+        "inputTokens": 463,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 419.179583000001,
+        "raw": {
+          "priority": "routine",
+          "load": "cart",
+          "exclusiveCar": 0.0022136272867385996
+        },
+        "adjustments": [],
+        "source": "model",
+        "cache": "miss"
+      },
+      "elapsedMs": 419.35970799999814
+    },
+    "stroke alert pt to ct, on gurney": {
+      "input": {
+        "note": "stroke alert pt to CT, on gurney",
+        "from": 1,
+        "to": 2
+      },
+      "response": {
+        "priority": "stat",
+        "priorityConfidence": 0.9860338294712715,
+        "priorityProbabilities": {
+          "stat": 0.9895253721034536,
+          "urgent": 0.008574414746525767,
+          "routine": 0.0016792531450722983,
+          "visitor": 0.00022096000494824014
+        },
+        "load": "bed",
+        "loadConfidence": 0.988465844550178,
+        "loadProbabilities": {
+          "bed": 0.9913493834126336,
+          "wheelchair": 0.0007300799311495936,
+          "cart": 0.0033086995042082654,
+          "walking": 0.004611837152008488
+        },
+        "exclusiveCar": 1,
+        "latencyMs": 390.5722080000014,
+        "inputTokens": 478,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 390.4180830000005,
+        "raw": {
+          "priority": "stat",
+          "load": "bed",
+          "exclusiveCar": 0.19311417176296983
+        },
+        "adjustments": [
+          "dedicated car requires explicit evidence or a strong model signal"
+        ],
+        "source": "model+guardrails",
+        "cache": "miss"
+      },
+      "elapsedMs": 390.58233299999847
+    },
+    "taking deceased pt downstairs": {
+      "input": {
+        "note": "taking deceased pt downstairs",
+        "from": 4,
+        "to": 0
+      },
+      "response": {
+        "priority": "routine",
+        "priorityConfidence": 0.9609602416945261,
+        "priorityProbabilities": {
+          "stat": 0.00745507807734953,
+          "urgent": 0.02086828295262261,
+          "routine": 0.9707201812708945,
+          "visitor": 0.0009564576991333597
+        },
+        "load": "bed",
+        "loadConfidence": 0.5163651139049864,
+        "loadProbabilities": {
+          "bed": 0.3444970787299753,
+          "wheelchair": 0.005862983159250838,
+          "cart": 0.012366102682033966,
+          "walking": 0.6372738354287398
+        },
+        "exclusiveCar": 1,
+        "latencyMs": 425.9524160000001,
+        "inputTokens": 460,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 425.75958399999945,
+        "raw": {
+          "priority": "routine",
+          "load": "walking",
+          "exclusiveCar": 0.013681023307400196
+        },
+        "adjustments": [
+          "load: walking → bed",
+          "dedicated car requires explicit evidence or a strong model signal"
+        ],
+        "source": "model+guardrails",
+        "cache": "miss"
+      },
+      "elapsedMs": 425.95966599999883
+    }
+  },
+  "cases": {
+    "staff-icu": {
+      "input": {
+        "note": "One employee walking from the ICU to lunch; no patient or equipment.",
+        "from": 4,
+        "to": 9
+      },
+      "response": {
+        "priority": "routine",
+        "priorityConfidence": 0.990290114566697,
+        "priorityProbabilities": {
+          "stat": 0.00212894226623769,
+          "urgent": 0.003697398958535117,
+          "routine": 0.9927175859250228,
+          "visitor": 0.0014560728502044978
+        },
+        "load": "walking",
+        "loadConfidence": 0.9966565550970028,
+        "loadProbabilities": {
+          "bed": 0.0004496950807274938,
+          "wheelchair": 0.0005279383331149637,
+          "cart": 0.0015299502634054305,
+          "walking": 0.9974924163227521
+        },
+        "exclusiveCar": 0,
+        "latencyMs": 539.2103749999987,
+        "inputTokens": 490,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 539.0290420000019,
+        "raw": {
+          "priority": "routine",
+          "load": "walking",
+          "exclusiveCar": 0.003827609451782581
+        },
+        "adjustments": [],
+        "source": "model",
+        "cache": "miss"
+      },
+      "elapsedMs": 539.2935829999988
+    },
+    "doctor-pharmacy": {
+      "input": {
+        "note": "A doctor is walking to collect their own prescription after work.",
+        "from": 3,
+        "to": 1
+      },
+      "response": {
+        "priority": "routine",
+        "priorityConfidence": 0.9674120226216144,
+        "priorityProbabilities": {
+          "stat": 0.002957444103071741,
+          "urgent": 0.01738904189495759,
+          "routine": 0.9755590169662108,
+          "visitor": 0.004094497035759887
+        },
+        "load": "walking",
+        "loadConfidence": 0.9890548662220434,
+        "loadProbabilities": {
+          "bed": 0.0008304889159450683,
+          "wheelchair": 0.0013625582232173578,
+          "cart": 0.006015803194304983,
+          "walking": 0.9917911496665326
+        },
+        "exclusiveCar": 0,
+        "latencyMs": 491.65720800000054,
+        "inputTokens": 484,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 491.3904999999977,
+        "raw": {
+          "priority": "routine",
+          "load": "walking",
+          "exclusiveCar": 0.0016219631713998706
+        },
+        "adjustments": [],
+        "source": "model",
+        "cache": "miss"
+      },
+      "elapsedMs": 491.66712499999994
+    },
+    "no-bed": {
+      "input": {
+        "note": "Visitor walking alone; no bed, no wheelchair, and no medical emergency.",
+        "from": 1,
+        "to": 4
+      },
+      "response": {
+        "priority": "visitor",
+        "priorityConfidence": 0.9125811549065898,
+        "priorityProbabilities": {
+          "stat": 0.0007648239807124653,
+          "urgent": 0.0022627081179945586,
+          "routine": 0.06253660172135063,
+          "visitor": 0.9344358661799423
+        },
+        "load": "walking",
+        "loadConfidence": 0.997026115819213,
+        "loadProbabilities": {
+          "bed": 0.0006685958453650683,
+          "wheelchair": 0.0007017656872793873,
+          "cart": 0.0008600516029457738,
+          "walking": 0.9977695868644098
+        },
+        "exclusiveCar": 0,
+        "latencyMs": 349.2293329999993,
+        "inputTokens": 493,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 349.127999999997,
+        "raw": {
+          "priority": "visitor",
+          "load": "walking",
+          "exclusiveCar": 0.005465260905451324
+        },
+        "adjustments": [],
+        "source": "model",
+        "cache": "miss"
+      },
+      "elapsedMs": 349.23712499999965
+    },
+    "negated-code": {
+      "input": {
+        "note": "Code blue drill is over. One instructor walks back to the office.",
+        "from": 5,
+        "to": 1
+      },
+      "response": {
+        "priority": "routine",
+        "priorityConfidence": 0.8735102095432222,
+        "priorityProbabilities": {
+          "stat": 0.08498438423946043,
+          "urgent": 0.00584305701797124,
+          "routine": 0.9051326571574166,
+          "visitor": 0.004039901585151586
+        },
+        "load": "walking",
+        "loadConfidence": 0.9941916421344494,
+        "loadProbabilities": {
+          "bed": 0.0019679211764764607,
+          "wheelchair": 0.0005860795996050881,
+          "cart": 0.0018022676230812862,
+          "walking": 0.9956437316008371
+        },
+        "exclusiveCar": 0,
+        "latencyMs": 397.010291999999,
+        "inputTokens": 490,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 396.9380830000009,
+        "raw": {
+          "priority": "routine",
+          "load": "walking",
+          "exclusiveCar": 0.0049277601080217155
+        },
+        "adjustments": [],
+        "source": "model",
+        "cache": "miss"
+      },
+      "elapsedMs": 397.01666699999987
+    },
+    "linen-trolley": {
+      "input": {
+        "note": "Housekeeping moving a trolley full of clean towels to the ward.",
+        "from": 0,
+        "to": 6
+      },
+      "response": {
+        "priority": "routine",
+        "priorityConfidence": 0.9893159718837025,
+        "priorityProbabilities": {
+          "stat": 0.00087798648110647,
+          "urgent": 0.006579608298331698,
+          "routine": 0.9919869789127769,
+          "visitor": 0.0005554263077849434
+        },
+        "load": "cart",
+        "loadConfidence": 0.957350220512316,
+        "loadProbabilities": {
+          "bed": 0.0010303718884662667,
+          "wheelchair": 0.0009646061484678597,
+          "cart": 0.968012665384237,
+          "walking": 0.02999235657882887
+        },
+        "exclusiveCar": 0,
+        "latencyMs": 353.6879169999993,
+        "inputTokens": 490,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 353.63850000000093,
+        "raw": {
+          "priority": "routine",
+          "load": "cart",
+          "exclusiveCar": 0.002640262381302414
+        },
+        "adjustments": [],
+        "source": "model",
+        "cache": "miss"
+      },
+      "elapsedMs": 353.6912500000035
+    },
+    "food-cart": {
+      "input": {
+        "note": "Kitchen attendant delivering a large cart of evening meals.",
+        "from": 9,
+        "to": 8
+      },
+      "response": {
+        "priority": "routine",
+        "priorityConfidence": 0.9932301769918429,
+        "priorityProbabilities": {
+          "stat": 0.0008271641253985727,
+          "urgent": 0.0034374239412955808,
+          "routine": 0.9949226327438822,
+          "visitor": 0.0008127791894236475
+        },
+        "load": "cart",
+        "loadConfidence": 0.9902434911896902,
+        "loadProbabilities": {
+          "bed": 0.0005164681044911488,
+          "wheelchair": 0.00039889692778795517,
+          "cart": 0.9926826183922677,
+          "walking": 0.006402016575453291
+        },
+        "exclusiveCar": 0,
+        "latencyMs": 384.67916700000205,
+        "inputTokens": 478,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 384.6142910000017,
+        "raw": {
+          "priority": "routine",
+          "load": "cart",
+          "exclusiveCar": 0.0015762433511785994
+        },
+        "adjustments": [],
+        "source": "model",
+        "cache": "miss"
+      },
+      "elapsedMs": 384.692500000001
+    },
+    "scheduled-chair": {
+      "input": {
+        "note": "Patient seated in a wheelchair going to a booked dialysis appointment.",
+        "from": 6,
+        "to": 2
+      },
+      "response": {
+        "priority": "urgent",
+        "priorityConfidence": 0.8578201764305547,
+        "priorityProbabilities": {
+          "stat": 0.00427284865608005,
+          "urgent": 0.893365132322916,
+          "routine": 0.10064540143326274,
+          "visitor": 0.001716617587741159
+        },
+        "load": "wheelchair",
+        "loadConfidence": 0.9945652326647977,
+        "loadProbabilities": {
+          "bed": 0.00042970190390034476,
+          "wheelchair": 0.9959239244985982,
+          "cart": 0.0022771807953758305,
+          "walking": 0.001369192802125578
+        },
+        "exclusiveCar": 0,
+        "latencyMs": 363.2809579999994,
+        "inputTokens": 487,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 363.22320899999977,
+        "raw": {
+          "priority": "urgent",
+          "load": "wheelchair",
+          "exclusiveCar": 0.0013942793985916402
+        },
+        "adjustments": [],
+        "source": "model",
+        "cache": "miss"
+      },
+      "elapsedMs": 363.2848750000012
+    },
+    "stable-bed": {
+      "input": {
+        "note": "Stable patient on a hospital bed transferring to the recovery ward; no emergency.",
+        "from": 3,
+        "to": 6
+      },
+      "response": {
+        "priority": "urgent",
+        "priorityConfidence": 0.7359041720862215,
+        "priorityProbabilities": {
+          "stat": 0.0048040942974794665,
+          "urgent": 0.8019281290646662,
+          "routine": 0.1915188082529903,
+          "visitor": 0.0017489683848640883
+        },
+        "load": "bed",
+        "loadConfidence": 0.810318198172482,
+        "loadProbabilities": {
+          "bed": 0.8577386486293614,
+          "wheelchair": 0.005182877689061934,
+          "cart": 0.014387673735323505,
+          "walking": 0.12269079994625309
+        },
+        "exclusiveCar": 1,
+        "latencyMs": 372.463749999999,
+        "inputTokens": 496,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 372.3201659999977,
+        "raw": {
+          "priority": "urgent",
+          "load": "bed",
+          "exclusiveCar": 0.023323016059404938
+        },
+        "adjustments": [
+          "dedicated car requires explicit evidence or a strong model signal"
+        ],
+        "source": "model+guardrails",
+        "cache": "miss"
+      },
+      "elapsedMs": 372.4687090000007
+    },
+    "resuscitation": {
+      "input": {
+        "note": "Resuscitation team responding to an active cardiac arrest upstairs, on foot.",
+        "from": 1,
+        "to": 7
+      },
+      "response": {
+        "priority": "stat",
+        "priorityConfidence": 0.9959801636744593,
+        "priorityProbabilities": {
+          "stat": 0.9969851227558445,
+          "urgent": 0.000929446221584992,
+          "routine": 0.0019490856862333385,
+          "visitor": 0.00013634533633709761
+        },
+        "load": "walking",
+        "loadConfidence": 0.9921455150708178,
+        "loadProbabilities": {
+          "bed": 0.0025507461134541064,
+          "wheelchair": 0.0006163380492850494,
+          "cart": 0.002723779534147491,
+          "walking": 0.9941091363031134
+        },
+        "exclusiveCar": 1,
+        "latencyMs": 409.57866699999795,
+        "inputTokens": 493,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 409.39079200000197,
+        "raw": {
+          "priority": "stat",
+          "load": "walking",
+          "exclusiveCar": 0.19888601930010616
+        },
+        "adjustments": [
+          "dedicated car requires explicit evidence or a strong model signal"
+        ],
+        "source": "model+guardrails",
+        "cache": "miss"
+      },
+      "elapsedMs": 409.58612500000163
+    },
+    "critical-stretcher": {
+      "input": {
+        "note": "Critical trauma patient on a stretcher needs immediate transport to emergency surgery.",
+        "from": 1,
+        "to": 3
+      },
+      "response": {
+        "priority": "stat",
+        "priorityConfidence": 0.9834035844185408,
+        "priorityProbabilities": {
+          "stat": 0.9875526883139056,
+          "urgent": 0.010833060204237488,
+          "routine": 0.0014282084492047466,
+          "visitor": 0.0001860430326521665
+        },
+        "load": "bed",
+        "loadConfidence": 0.9858391272903626,
+        "loadProbabilities": {
+          "bed": 0.989379345467772,
+          "wheelchair": 0.0010028514333798077,
+          "cart": 0.00538690429811321,
+          "walking": 0.004230898800734979
+        },
+        "exclusiveCar": 1,
+        "latencyMs": 378.9524170000004,
+        "inputTokens": 490,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 378.7522910000007,
+        "raw": {
+          "priority": "stat",
+          "load": "bed",
+          "exclusiveCar": 0.12640156779479772
+        },
+        "adjustments": [
+          "dedicated car requires explicit evidence or a strong model signal"
+        ],
+        "source": "model+guardrails",
+        "cache": "miss"
+      },
+      "elapsedMs": 378.97279100000014
+    },
+    "specimen": {
+      "input": {
+        "note": "Courier walking with one urgent blood specimen for the lab; no patient is travelling.",
+        "from": 6,
+        "to": 2
+      },
+      "response": {
+        "priority": "urgent",
+        "priorityConfidence": 0.8686265696640416,
+        "priorityProbabilities": {
+          "stat": 0.011201403839860792,
+          "urgent": 0.9014699272480312,
+          "routine": 0.08630655970359169,
+          "visitor": 0.0010221092085163212
+        },
+        "load": "walking",
+        "loadConfidence": 0.9927359782598523,
+        "loadProbabilities": {
+          "bed": 0.0006178208237681512,
+          "wheelchair": 0.0008230428496074274,
+          "cart": 0.004007152631735279,
+          "walking": 0.9945519836948892
+        },
+        "exclusiveCar": 0,
+        "latencyMs": 393.5852080000004,
+        "inputTokens": 496,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 393.41412499999933,
+        "raw": {
+          "priority": "urgent",
+          "load": "walking",
+          "exclusiveCar": 0.040365619160972144
+        },
+        "adjustments": [],
+        "source": "model",
+        "cache": "miss"
+      },
+      "elapsedMs": 393.59454099999857
+    },
+    "family": {
+      "input": {
+        "note": "Three relatives are walking together to visit a patient in maternity.",
+        "from": 1,
+        "to": 8
+      },
+      "response": {
+        "priority": "visitor",
+        "priorityConfidence": 0.8741217297425008,
+        "priorityProbabilities": {
+          "stat": 0.003787200180707001,
+          "urgent": 0.01939830977438319,
+          "routine": 0.07122319273803424,
+          "visitor": 0.9055912973068756
+        },
+        "load": "walking",
+        "loadConfidence": 0.9955499383767726,
+        "loadProbabilities": {
+          "bed": 0.001100279372240974,
+          "wheelchair": 0.0007725073244950405,
+          "cart": 0.001464759520684458,
+          "walking": 0.9966624537825794
+        },
+        "exclusiveCar": 0,
+        "latencyMs": 387.34408299999996,
+        "inputTokens": 484,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 387.2211669999997,
+        "raw": {
+          "priority": "visitor",
+          "load": "walking",
+          "exclusiveCar": 0.0022449881848730117
+        },
+        "adjustments": [],
+        "source": "model",
+        "cache": "miss"
+      },
+      "elapsedMs": 387.3547080000026
+    },
+    "deceased": {
+      "input": {
+        "note": "Porter transferring a deceased patient to the mortuary on a stretcher.",
+        "from": 7,
+        "to": 0
+      },
+      "response": {
+        "priority": "routine",
+        "priorityConfidence": 0.9409243268062594,
+        "priorityProbabilities": {
+          "stat": 0.0051267282105551025,
+          "urgent": 0.03829558043171182,
+          "routine": 0.9556932451046946,
+          "visitor": 0.0008844462530386046
+        },
+        "load": "bed",
+        "loadConfidence": 0.9683288020385551,
+        "loadProbabilities": {
+          "bed": 0.9762466015289163,
+          "wheelchair": 0.0017420744141666098,
+          "cart": 0.008417361503107193,
+          "walking": 0.013593962553809852
+        },
+        "exclusiveCar": 1,
+        "latencyMs": 388.9888749999991,
+        "inputTokens": 493,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 388.81558399999994,
+        "raw": {
+          "priority": "routine",
+          "load": "bed",
+          "exclusiveCar": 0.20776463838024092
+        },
+        "adjustments": [
+          "dedicated car requires explicit evidence or a strong model signal"
+        ],
+        "source": "model+guardrails",
+        "cache": "miss"
+      },
+      "elapsedMs": 388.99908399999913
+    },
+    "empty-bed": {
+      "input": {
+        "note": "Facilities staff returning an empty hospital bed to storage. No patient aboard.",
+        "from": 6,
+        "to": 0
+      },
+      "response": {
+        "priority": "routine",
+        "priorityConfidence": 0.9850586976100374,
+        "priorityProbabilities": {
+          "stat": 0.0022517105463797037,
+          "urgent": 0.007949936952766955,
+          "routine": 0.9887940232075281,
+          "visitor": 0.0010043292933252692
+        },
+        "load": "bed",
+        "loadConfidence": 0.7608815287430518,
+        "loadProbabilities": {
+          "bed": 0.8206611465572888,
+          "wheelchair": 0.002155982037599175,
+          "cart": 0.03432308650841201,
+          "walking": 0.14285978489669998
+        },
+        "exclusiveCar": 1,
+        "latencyMs": 504.68987500000003,
+        "inputTokens": 493,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 504.50541699999667,
+        "raw": {
+          "priority": "routine",
+          "load": "bed",
+          "exclusiveCar": 0.10800165612356365
+        },
+        "adjustments": [
+          "dedicated car requires explicit evidence or a strong model signal"
+        ],
+        "source": "model+guardrails",
+        "cache": "miss"
+      },
+      "elapsedMs": 504.69845799999894
+    },
+    "cancelled-trauma": {
+      "input": {
+        "note": "The trauma transfer was cancelled; a receptionist is walking back to the lobby.",
+        "from": 4,
+        "to": 1
+      },
+      "response": {
+        "priority": "routine",
+        "priorityConfidence": 0.8417147430174872,
+        "priorityProbabilities": {
+          "stat": 0.04188128151489319,
+          "urgent": 0.06520222426645463,
+          "routine": 0.8812860572631154,
+          "visitor": 0.011630436955536835
+        },
+        "load": "walking",
+        "loadConfidence": 0.9870979546441595,
+        "loadProbabilities": {
+          "bed": 0.003699388933869528,
+          "wheelchair": 0.0020501596642947743,
+          "cart": 0.003926985418716054,
+          "walking": 0.9903234659831196
+        },
+        "exclusiveCar": 0,
+        "latencyMs": 436.2402919999986,
+        "inputTokens": 496,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 436.0092079999995,
+        "raw": {
+          "priority": "routine",
+          "load": "walking",
+          "exclusiveCar": 0.005781643736437741
+        },
+        "adjustments": [],
+        "source": "model",
+        "cache": "miss"
+      },
+      "elapsedMs": 436.24745800000164
+    },
+    "equipment-negation": {
+      "input": {
+        "note": "Technician walking to repair a wheelchair upstairs, carrying only a small screwdriver.",
+        "from": 1,
+        "to": 6
+      },
+      "response": {
+        "priority": "routine",
+        "priorityConfidence": 0.9010178516372879,
+        "priorityProbabilities": {
+          "stat": 0.009991132221516947,
+          "urgent": 0.05764311746649285,
+          "routine": 0.9257633887279659,
+          "visitor": 0.0066023615840242285
+        },
+        "load": "walking",
+        "loadConfidence": 0.9582388033853938,
+        "loadProbabilities": {
+          "bed": 0.0011511811221539016,
+          "wheelchair": 0.027712696421205062,
+          "cart": 0.0024570199175957697,
+          "walking": 0.9686791025390453
+        },
+        "exclusiveCar": 0,
+        "latencyMs": 395.3301670000001,
+        "inputTokens": 496,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 395.1864999999998,
+        "raw": {
+          "priority": "routine",
+          "load": "walking",
+          "exclusiveCar": 0.001966103140128627
+        },
+        "adjustments": [],
+        "source": "model",
+        "cache": "miss"
+      },
+      "elapsedMs": 395.3367499999986
+    },
+    "holdout-meeting": {
+      "input": {
+        "note": "A cardiologist is taking the lift alone to a scheduled staff meeting.",
+        "from": 5,
+        "to": 3
+      },
+      "response": {
+        "priority": "routine",
+        "priorityConfidence": 0.9901656529400534,
+        "priorityProbabilities": {
+          "stat": 0.0032387020331531677,
+          "urgent": 0.003307101362845059,
+          "routine": 0.9926242397050401,
+          "visitor": 0.0008299568989615949
+        },
+        "load": "walking",
+        "loadConfidence": 0.9846043686244131,
+        "loadProbabilities": {
+          "bed": 0.0018539540190163845,
+          "wheelchair": 0.0025942104175319704,
+          "cart": 0.007098559095141819,
+          "walking": 0.9884532764683098
+        },
+        "exclusiveCar": 0,
+        "latencyMs": 463.47733300000255,
+        "inputTokens": 490,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 463.34420800000225,
+        "raw": {
+          "priority": "routine",
+          "load": "walking",
+          "exclusiveCar": 0.005030581262663512
+        },
+        "adjustments": [],
+        "source": "model",
+        "cache": "miss"
+      },
+      "elapsedMs": 463.48345900000277
+    },
+    "holdout-guests": {
+      "input": {
+        "note": "Four guests are on their way to see a new baby.",
+        "from": 1,
+        "to": 8
+      },
+      "response": {
+        "priority": "visitor",
+        "priorityConfidence": 0.964394900056213,
+        "priorityProbabilities": {
+          "stat": 0.0009112586418723219,
+          "urgent": 0.0048447980906587635,
+          "routine": 0.0209477682253092,
+          "visitor": 0.9732961750421597
+        },
+        "load": "walking",
+        "loadConfidence": 0.9868446214532857,
+        "loadProbabilities": {
+          "bed": 0.002179491636116103,
+          "wheelchair": 0.0019683623901650465,
+          "cart": 0.005718679883754617,
+          "walking": 0.9901334660899642
+        },
+        "exclusiveCar": 0,
+        "latencyMs": 389.73562500000116,
+        "inputTokens": 484,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 389.5340419999993,
+        "raw": {
+          "priority": "visitor",
+          "load": "walking",
+          "exclusiveCar": 0.0017029934620061452
+        },
+        "adjustments": [],
+        "source": "model",
+        "cache": "miss"
+      },
+      "elapsedMs": 389.74649999999747
+    },
+    "holdout-chair": {
+      "input": {
+        "note": "Transporter pushing a patient in a wheeled chair for a planned scan.",
+        "from": 7,
+        "to": 2
+      },
+      "response": {
+        "priority": "urgent",
+        "priorityConfidence": 0.8955690076445566,
+        "priorityProbabilities": {
+          "stat": 0.00611350959824018,
+          "urgent": 0.9216767557334175,
+          "routine": 0.07145885758357137,
+          "visitor": 0.0007508770847710311
+        },
+        "load": "wheelchair",
+        "loadConfidence": 0.906500840864778,
+        "loadProbabilities": {
+          "bed": 0.01413175885311357,
+          "wheelchair": 0.9298756306485835,
+          "cart": 0.042148805564068643,
+          "walking": 0.013843804934234288
+        },
+        "exclusiveCar": 0,
+        "latencyMs": 431.55333299999984,
+        "inputTokens": 493,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 431.3079579999976,
+        "raw": {
+          "priority": "urgent",
+          "load": "wheelchair",
+          "exclusiveCar": 0.0027160825181505835
+        },
+        "adjustments": [],
+        "source": "model",
+        "cache": "miss"
+      },
+      "elapsedMs": 431.56324999999924
+    },
+    "holdout-code": {
+      "input": {
+        "note": "Crash response clinicians urgently attending an active code blue; travelling without equipment.",
+        "from": 1,
+        "to": 9
+      },
+      "response": {
+        "priority": "stat",
+        "priorityConfidence": 0.984428373943015,
+        "priorityProbabilities": {
+          "stat": 0.9883212804572612,
+          "urgent": 0.00383915840557103,
+          "routine": 0.0074212954907753375,
+          "visitor": 0.00041826564639240284
+        },
+        "load": "walking",
+        "loadConfidence": 0.9838876726875108,
+        "loadProbabilities": {
+          "bed": 0.004102564489269635,
+          "wheelchair": 0.0014095911538048913,
+          "cart": 0.00657208984129242,
+          "walking": 0.9879157545156331
+        },
+        "exclusiveCar": 1,
+        "latencyMs": 395.5721670000021,
+        "inputTokens": 493,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 395.34308299999975,
+        "raw": {
+          "priority": "stat",
+          "load": "walking",
+          "exclusiveCar": 0.13509129205522288
+        },
+        "adjustments": [
+          "dedicated car requires explicit evidence or a strong model signal"
+        ],
+        "source": "model+guardrails",
+        "cache": "miss"
+      },
+      "elapsedMs": 395.5841250000012
+    },
+    "holdout-empty-stretcher": {
+      "input": {
+        "note": "Unoccupied stretcher being wheeled back to equipment storage.",
+        "from": 4,
+        "to": 0
+      },
+      "response": {
+        "priority": "routine",
+        "priorityConfidence": 0.9731200885619806,
+        "priorityProbabilities": {
+          "stat": 0.0030859998567874833,
+          "urgent": 0.015740028228371065,
+          "routine": 0.9798400664214855,
+          "visitor": 0.0013339054933560563
+        },
+        "load": "bed",
+        "loadConfidence": 0.7426468648670116,
+        "loadProbabilities": {
+          "bed": 0.8069851486502587,
+          "wheelchair": 0.00372723930016836,
+          "cart": 0.17376513672109523,
+          "walking": 0.015522475328477668
+        },
+        "exclusiveCar": 1,
+        "latencyMs": 544.1299999999974,
+        "inputTokens": 484,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 543.9445420000011,
+        "raw": {
+          "priority": "routine",
+          "load": "bed",
+          "exclusiveCar": 0.047939765699519826
+        },
+        "adjustments": [
+          "dedicated car requires explicit evidence or a strong model signal"
+        ],
+        "source": "model+guardrails",
+        "cache": "miss"
+      },
+      "elapsedMs": 544.1381250000013
+    },
+    "holdout-morgue": {
+      "input": {
+        "note": "The porter is taking someone who has died to the morgue.",
+        "from": 6,
+        "to": 0
+      },
+      "response": {
+        "priority": "routine",
+        "priorityConfidence": 0.9783060588254501,
+        "priorityProbabilities": {
+          "stat": 0.0039061357490232733,
+          "urgent": 0.01057967484588325,
+          "routine": 0.9837295441190875,
+          "visitor": 0.001784645286006016
+        },
+        "load": "bed",
+        "loadConfidence": 0.5240997727361947,
+        "loadProbabilities": {
+          "bed": 0.3208280760727087,
+          "wheelchair": 0.008267436950353087,
+          "cart": 0.027829657424792188,
+          "walking": 0.643074829552146
+        },
+        "exclusiveCar": 1,
+        "latencyMs": 480.40666599999895,
+        "inputTokens": 487,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 480.25524999999834,
+        "raw": {
+          "priority": "routine",
+          "load": "walking",
+          "exclusiveCar": 0.05773496737428052
+        },
+        "adjustments": [
+          "load: walking → bed",
+          "dedicated car requires explicit evidence or a strong model signal"
+        ],
+        "source": "model+guardrails",
+        "cache": "miss"
+      },
+      "elapsedMs": 480.4154579999995
+    },
+    "holdout-laundry": {
+      "input": {
+        "note": "A trolley carrying sealed bags of used laundry is going to the basement.",
+        "from": 8,
+        "to": 0
+      },
+      "response": {
+        "priority": "routine",
+        "priorityConfidence": 0.988346579882882,
+        "priorityProbabilities": {
+          "stat": 0.0014023275108950757,
+          "urgent": 0.006263195914220063,
+          "routine": 0.9912599349121615,
+          "visitor": 0.0010745416627233593
+        },
+        "load": "cart",
+        "loadConfidence": 0.9741701350192126,
+        "loadProbabilities": {
+          "bed": 0.0030355684158210375,
+          "wheelchair": 0.001872737118644856,
+          "cart": 0.9806276012644094,
+          "walking": 0.01446409320112466
+        },
+        "exclusiveCar": 0,
+        "latencyMs": 372.01708300000246,
+        "inputTokens": 493,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 371.5870419999992,
+        "raw": {
+          "priority": "routine",
+          "load": "cart",
+          "exclusiveCar": 0.004391825934050006
+        },
+        "adjustments": [],
+        "source": "model",
+        "cache": "miss"
+      },
+      "elapsedMs": 372.0346669999999
+    },
+    "holdout-stroke": {
+      "input": {
+        "note": "Stroke-alert patient lying on a gurney, immediate transfer for treatment.",
+        "from": 1,
+        "to": 2
+      },
+      "response": {
+        "priority": "stat",
+        "priorityConfidence": 0.9849343913985303,
+        "priorityProbabilities": {
+          "stat": 0.9887007935488977,
+          "urgent": 0.009964693586993648,
+          "routine": 0.0011643540727020304,
+          "visitor": 0.00017015879140660172
+        },
+        "load": "bed",
+        "loadConfidence": 0.9867438409907958,
+        "loadProbabilities": {
+          "bed": 0.9900578807430969,
+          "wheelchair": 0.000701082912338957,
+          "cart": 0.006497346685608002,
+          "walking": 0.0027436896589562647
+        },
+        "exclusiveCar": 1,
+        "latencyMs": 406.7227500000008,
+        "inputTokens": 493,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 406.5639579999988,
+        "raw": {
+          "priority": "stat",
+          "load": "bed",
+          "exclusiveCar": 0.1762958904371415
+        },
+        "adjustments": [
+          "dedicated car requires explicit evidence or a strong model signal"
+        ],
+        "source": "model+guardrails",
+        "cache": "miss"
+      },
+      "elapsedMs": 406.73004199999923
+    },
+    "holdout-training": {
+      "input": {
+        "note": "Returning from stroke simulation training, instructor on foot.",
+        "from": 5,
+        "to": 1
+      },
+      "response": {
+        "priority": "routine",
+        "priorityConfidence": 0.8217962906073701,
+        "priorityProbabilities": {
+          "stat": 0.0900069674776621,
+          "urgent": 0.038836253162215985,
+          "routine": 0.8663472179555276,
+          "visitor": 0.004809561404594311
+        },
+        "load": "walking",
+        "loadConfidence": 0.9945752201595143,
+        "loadProbabilities": {
+          "bed": 0.0011295836260975679,
+          "wheelchair": 0.0014110934340104667,
+          "cart": 0.001527907820256294,
+          "walking": 0.9959314151196357
+        },
+        "exclusiveCar": 0,
+        "latencyMs": 464.15866599999936,
+        "inputTokens": 478,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 464.0961669999997,
+        "raw": {
+          "priority": "routine",
+          "load": "walking",
+          "exclusiveCar": 0.005668689293599212
+        },
+        "adjustments": [],
+        "source": "model",
+        "cache": "miss"
+      },
+      "elapsedMs": 464.16362500000105
+    },
+    "holdout-pathology": {
+      "input": {
+        "note": "Messenger bringing time-sensitive pathology samples by hand.",
+        "from": 4,
+        "to": 2
+      },
+      "response": {
+        "priority": "urgent",
+        "priorityConfidence": 0.9453059891617146,
+        "priorityProbabilities": {
+          "stat": 0.011206751391642428,
+          "urgent": 0.958979491871286,
+          "routine": 0.029156642731158183,
+          "visitor": 0.0006571140059134534
+        },
+        "load": "walking",
+        "loadConfidence": 0.9783860419229388,
+        "loadProbabilities": {
+          "bed": 0.0017192679385121298,
+          "wheelchair": 0.0013983109878984365,
+          "cart": 0.013092889631385359,
+          "walking": 0.983789531442204
+        },
+        "exclusiveCar": 0,
+        "latencyMs": 384.479124999998,
+        "inputTokens": 475,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 384.4053750000021,
+        "raw": {
+          "priority": "urgent",
+          "load": "walking",
+          "exclusiveCar": 0.03229932769761696
+        },
+        "adjustments": [],
+        "source": "model",
+        "cache": "miss"
+      },
+      "elapsedMs": 384.48220800000126
+    },
+    "holdout-parent": {
+      "input": {
+        "note": "A parent is walking to the children's ward carrying a toy.",
+        "from": 1,
+        "to": 9
+      },
+      "response": {
+        "priority": "visitor",
+        "priorityConfidence": 0.4569136992604297,
+        "priorityProbabilities": {
+          "stat": 0.002622880484929768,
+          "urgent": 0.014549847934132757,
+          "routine": 0.39014199713561515,
+          "visitor": 0.5926852744453223
+        },
+        "load": "walking",
+        "loadConfidence": 0.9906357817087704,
+        "loadProbabilities": {
+          "bed": 0.0008169008125558757,
+          "wheelchair": 0.0010431004675868453,
+          "cart": 0.005163162438279365,
+          "walking": 0.9929768362815778
+        },
+        "exclusiveCar": 0,
+        "latencyMs": 362.7794160000012,
+        "inputTokens": 487,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 362.671875,
+        "raw": {
+          "priority": "visitor",
+          "load": "walking",
+          "exclusiveCar": 0.002691874120499144
+        },
+        "adjustments": [],
+        "source": "model",
+        "cache": "miss"
+      },
+      "elapsedMs": 362.78470800000287
+    },
+    "holdout-cancelled-chair": {
+      "input": {
+        "note": "Wheelchair appointment cancelled. The ward clerk will walk to reception alone.",
+        "from": 6,
+        "to": 1
+      },
+      "response": {
+        "priority": "routine",
+        "priorityConfidence": 0.9575759619924283,
+        "priorityProbabilities": {
+          "stat": 0.002373096911190158,
+          "urgent": 0.025439400280230406,
+          "routine": 0.9681819714943213,
+          "visitor": 0.004005531314258201
+        },
+        "load": "wheelchair",
+        "loadConfidence": 0.6460679921185664,
+        "loadProbabilities": {
+          "bed": 0.001125336546904291,
+          "wheelchair": 0.2610816781161451,
+          "cart": 0.0032419912480258265,
+          "walking": 0.7345509940889248
+        },
+        "exclusiveCar": 0,
+        "latencyMs": 552.0086249999986,
+        "inputTokens": 490,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 551.8902500000004,
+        "raw": {
+          "priority": "routine",
+          "load": "walking",
+          "exclusiveCar": 0.002485792259860318
+        },
+        "adjustments": [
+          "load: walking → wheelchair"
+        ],
+        "source": "model+guardrails",
+        "cache": "miss"
+      },
+      "elapsedMs": 552.0141250000015
+    },
+    "holdout-old-emergency": {
+      "input": {
+        "note": "Hospital employee carrying paperwork for an emergency surgery that finished yesterday.",
+        "from": 3,
+        "to": 4
+      },
+      "response": {
+        "priority": "routine",
+        "priorityConfidence": 0.5088382556824009,
+        "priorityProbabilities": {
+          "stat": 0.10017891556125198,
+          "urgent": 0.2634657768753045,
+          "routine": 0.6316286917618007,
+          "visitor": 0.004726615801642856
+        },
+        "load": "walking",
+        "loadConfidence": 0.9677408239176674,
+        "loadProbabilities": {
+          "bed": 0.001602534335718213,
+          "wheelchair": 0.0014953706653553767,
+          "cart": 0.021096477060675974,
+          "walking": 0.9758056179382505
+        },
+        "exclusiveCar": 0,
+        "latencyMs": 469.8916250000002,
+        "inputTokens": 484,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 469.7594169999975,
+        "raw": {
+          "priority": "routine",
+          "load": "walking",
+          "exclusiveCar": 0.007872250145615982
+        },
+        "adjustments": [],
+        "source": "model",
+        "cache": "miss"
+      },
+      "elapsedMs": 469.89887499999895
+    },
+    "holdout-planned-bed": {
+      "input": {
+        "note": "Patient transport on a bed for scheduled MRI, stable and comfortable.",
+        "from": 8,
+        "to": 2
+      },
+      "response": {
+        "priority": "urgent",
+        "priorityConfidence": 0.8630256394706928,
+        "priorityProbabilities": {
+          "stat": 0.0025036651928214636,
+          "urgent": 0.8972692296030196,
+          "routine": 0.09923747258666674,
+          "visitor": 0.000989632617492194
+        },
+        "load": "bed",
+        "loadConfidence": 0.9828375441886896,
+        "loadProbabilities": {
+          "bed": 0.9871281581415172,
+          "wheelchair": 0.002149767024767114,
+          "cart": 0.0044117124198960935,
+          "walking": 0.006310362413819659
+        },
+        "exclusiveCar": 1,
+        "latencyMs": 518.934792,
+        "inputTokens": 487,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km",
+        "modelLatencyMs": 518.8171250000014,
+        "raw": {
+          "priority": "urgent",
+          "load": "bed",
+          "exclusiveCar": 0.033251889221145796
+        },
+        "adjustments": [
+          "dedicated car requires explicit evidence or a strong model signal"
+        ],
+        "source": "model+guardrails",
+        "cache": "miss"
+      },
+      "elapsedMs": 518.9407079999983
+    }
+  },
+  "events": {
+    "Trauma incoming to the ED in 5 minutes": {
+      "input": "Trauma incoming to the ED in 5 minutes",
+      "response": {
+        "type": "priority_transport",
+        "typeConfidence": 0.9850996037674457,
+        "floor": 1,
+        "floorConfidence": 0.6288512772045614,
+        "car": null,
+        "carConfidence": 0.9110943796459163,
+        "latencyMs": 402.68191600000137,
+        "inputTokens": 562,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km"
+      },
+      "elapsedMs": 403.4362910000018
+    },
+    "Car C door keeps sticking": {
+      "input": "Car C door keeps sticking",
+      "response": {
+        "type": "car_fault",
+        "typeConfidence": 0.9811707645585729,
+        "floor": null,
+        "floorConfidence": 0.8518140976152617,
+        "car": 2,
+        "carConfidence": 0.8065499014455113,
+        "latencyMs": 485.3244999999988,
+        "inputTokens": 547,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km"
+      },
+      "elapsedMs": 485.63483300000007
+    },
+    "Visiting hours just started": {
+      "input": "Visiting hours just started",
+      "response": {
+        "type": "surge",
+        "typeConfidence": 0.9910892883182393,
+        "floor": null,
+        "floorConfidence": 0.4766010018327359,
+        "car": null,
+        "carConfidence": 0.8760057508186063,
+        "latencyMs": 375.4666670000006,
+        "inputTokens": 547,
+        "model": "startlux-decision-v1.1-4b-autothink-q4km"
+      },
+      "elapsedMs": 375.50066700000025
+    }
+  },
+  "sourceHashes": {
+    "src/lib/jev/client.ts": "b683cba09b4df1b83f086f389a3ef9f8ceee274dacd009eb1f4e02b9532cee07",
+    "src/lib/jev/interpretRequest.ts": "1bc4efc3037971572fd9630196fec8a77bd69b7240666b80ae22d18353d8cfc2",
+    "src/lib/jev/interpretEvent.ts": "f9dd5ae94b3c82b216a07f4106d7f8c7632659b94f040ff6231cfcceac80e37a",
+    "src/lib/jev/requestEvidence.ts": "51d214c14dfa6872dc9a73cd9ecc9f207be1292949113b494153408d4de812d7"
+  }
+}
