@@ -10,6 +10,17 @@ export interface ElevatorRequest {
   note: string;
 }
 
+// Observable request fields sent to the model, not a reconstruction of its
+// internal reasoning. Safe to render in the browser: no transport/auth config.
+export interface RequestModelInput {
+  state: { note: string };
+  questions: {
+    priority: { type: "choice"; instructions: string; criteria: Record<Priority, string> };
+    load: { type: "choice"; instructions: string; criteria: Record<Load, string> };
+    exclusive_car: { type: "noul"; instructions: string };
+  };
+}
+
 export interface RequestInterpretation {
   priority: Priority;
   priorityConfidence: number;
@@ -26,6 +37,7 @@ export interface RequestInterpretation {
   modelLatencyMs?: number;
   raw?: { priority: Priority; load: Load; exclusiveCar: number };
   adjustments?: string[];
+  modelInput?: RequestModelInput;
 }
 
 // All questions go in one call: they're evaluated in parallel, so the extra
@@ -66,11 +78,12 @@ async function interpretUncached(
   options?: { signal?: AbortSignal },
 ): Promise<RequestInterpretation> {
   const started = performance.now();
+  const modelInput = structuredClone({
+    state: { note: req.note.replace(/\bw\/c\b/gi, "wheelchair") },
+    questions: QUESTIONS,
+  });
   const res = await systemOne(
-    {
-      state: { note: req.note.replace(/\bw\/c\b/gi, "wheelchair") },
-      questions: QUESTIONS,
-    },
+    modelInput,
     { signal: options?.signal },
   );
   const latencyMs = performance.now() - started;
@@ -108,6 +121,7 @@ async function interpretUncached(
     modelLatencyMs: latencyMs,
     raw,
     adjustments,
+    modelInput,
     source: adjustments.length ? "model+guardrails" : "model",
   };
 }

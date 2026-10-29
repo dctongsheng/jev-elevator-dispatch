@@ -4,6 +4,8 @@ import { FLOORS, FLOOR_COUNT } from "@/lib/hospital";
 import { CAR_COUNT, carName, type Column } from "@/lib/sim/engine";
 import type { Priority } from "@/lib/jev/interpretRequest";
 import type { Passenger } from "@/lib/sim/types";
+import { floorLabel, requestNote } from "@/lib/i18n/domain";
+import { useLanguage } from "./LanguageProvider";
 
 export const PRIORITY_COLOR: Record<Priority, string> = {
   stat: "#ef4444",
@@ -17,7 +19,6 @@ const LABEL_W = 118;
 const QUEUE_W = 230;
 const SHAFT_W = 40;
 const SHAFT_GAP = 8;
-const WIDTH = LABEL_W + QUEUE_W + CAR_COUNT * (SHAFT_W + SHAFT_GAP);
 const HEIGHT = FLOOR_COUNT * FLOOR_H;
 const MAX_DOTS = 8;
 
@@ -25,7 +26,10 @@ const yOf = (floor: number) => HEIGHT - (floor + 1) * FLOOR_H;
 
 // Waiting passengers are colored by their true priority: this is the world as
 // it is, which the baseline can't see and Jev has to infer.
-export function Building({ column }: { column: Column }) {
+export function Building({ column, compact = false }: { column: Column; compact?: boolean }) {
+  const { locale, t } = useLanguage();
+  const queueWidth = compact ? 78 : QUEUE_W;
+  const width = LABEL_W + queueWidth + CAR_COUNT * (SHAFT_W + SHAFT_GAP);
   const waiting = new Map<number, Passenger[]>();
   for (const p of column.passengers.values()) {
     if (p.status !== "waiting" && p.status !== "interpreting") continue;
@@ -35,12 +39,12 @@ export function Building({ column }: { column: Column }) {
   }
 
   return (
-    <svg viewBox={`0 0 ${WIDTH} ${HEIGHT}`} className="w-full h-auto" role="img" aria-label="Elevator bank">
+    <svg viewBox={`0 0 ${width} ${HEIGHT}`} className={compact ? "h-full w-full" : "w-full h-auto"} role="img" aria-label={t("Elevator bank", "电梯运行图")}>
       {FLOORS.map((f) => (
         <g key={f.floor}>
-          <rect x={0} y={yOf(f.floor)} width={WIDTH} height={FLOOR_H} fill={f.floor % 2 ? "#18181b" : "#1c1c20"} />
+          <rect x={0} y={yOf(f.floor)} width={width} height={FLOOR_H} fill={f.floor % 2 ? "#18181b" : "#1c1c20"} />
           <text x={6} y={yOf(f.floor) + FLOOR_H / 2 + 4} fontSize={11} fill="#a1a1aa">
-            {f.short}
+            {floorLabel(f.floor, locale)}
           </text>
         </g>
       ))}
@@ -63,7 +67,7 @@ export function Building({ column }: { column: Column }) {
                 stroke={PRIORITY_COLOR[p.truth.priority]}
                 strokeWidth={1.5}
               >
-                <title>{`${p.note} (waiting ${(column.now - p.at).toFixed(0)}s)`}</title>
+                <title>{`${requestNote(p.note, locale)} · ${t("waiting", "候梯")} ${(column.now - p.at).toFixed(0)}s`}</title>
               </circle>
             ))}
             {ps.length > MAX_DOTS && (
@@ -76,7 +80,7 @@ export function Building({ column }: { column: Column }) {
       })}
 
       {column.cars.map((car) => {
-        const x = LABEL_W + QUEUE_W + car.id * (SHAFT_W + SHAFT_GAP);
+        const x = LABEL_W + queueWidth + car.id * (SHAFT_W + SHAFT_GAP);
         const riders = car.riders.map((id) => column.passengers.get(id)!);
         const top = riders.reduce<Priority | undefined>(
           (best, p) =>
@@ -114,7 +118,7 @@ export function Building({ column }: { column: Column }) {
               strokeWidth={car.faulty || car.exclusiveFor !== undefined ? 2 : 0}
               strokeDasharray={car.faulty ? "4 2" : undefined}
             >
-              <title>{`${carName(car.id)} · ${used}/10 load${car.faulty ? " · faulty doors" : ""}`}</title>
+              <title>{`${t(carName(car.id), `${"ABCD"[car.id]} 梯`)} · ${t("load", "载荷")} ${used}/10${car.faulty ? t(" · faulty doors", " · 门故障") : ""}`}</title>
             </rect>
             <rect x={x + 5} y={y + FLOOR_H - 12} width={((SHAFT_W - 10) * Math.min(used, 10)) / 10} height={3} fill="#fafafa" opacity={0.8} />
             <text x={x + SHAFT_W / 2} y={y + 13} fontSize={10} fontWeight={700} textAnchor="middle" fill="#fafafa">

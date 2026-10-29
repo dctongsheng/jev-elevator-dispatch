@@ -8,17 +8,25 @@ import {
   FAULT_DWELL,
   PRIORITY_WEIGHT,
   type Arrival,
+  type AssignmentTrace,
   type Car,
   type Decision,
+  type DispatchCandidateTrace,
+  type DispatchRejection,
+  type DispatchScore,
   type Mode,
   type Passenger,
   type Profile,
+  type TraceEvent,
 } from "./types";
 
 export const CAR_COUNT = 4;
 const CAR_LETTERS = "ABCD";
 const EPS = 1e-6;
 const MAX_LOG = 60;
+const MAX_ASSIGNMENT_TRACE = 8;
+const MAX_EVENT_TRACE = 12;
+const copyProfile = (profile: Profile): Profile => ({ ...profile, tags: [...profile.tags] });
 
 export const carName = (id: number) => `Car ${CAR_LETTERS[id]}`;
 
@@ -72,6 +80,12 @@ export class Column {
       wastedTrips: 0,
       profile: this.smart ? provisionalProfile(a.note) : BASELINE_PROFILE,
     };
+    p.trace = {
+      initialProfile: copyProfile(p.profile!),
+      modelStatus: this.interpret ? "pending" : "not-requested",
+      assignments: [],
+      events: [],
+    };
     this.passengers.set(p.id, p);
     if (!this.interpret) {
       return;
@@ -87,6 +101,13 @@ export class Column {
         this.interpLatencies.push(interp.latencyMs);
         this.inputTokens += interp.inputTokens;
         const profile = profileFrom(interp, p.note);
+        if (p.trace) {
+          p.trace.modelStatus = "success";
+          p.trace.modelCompletedAt = this.now;
+          p.trace.modelAppliedBeforePickup = p.status === "waiting";
+          p.trace.profileBeforeModel = copyProfile(p.profile!);
+          p.trace.modelProfile = copyProfile(profile);
+        }
         if (p.status === "waiting") {
           this.refinedBeforePickup++;
           if (p.profile!.priority !== profile.priority || p.profile!.units !== profile.units || p.profile!.exclusive !== profile.exclusive) {
@@ -97,6 +118,7 @@ export class Column {
           // Never retrofit a reservation or reassign someone already on board.
           this.lateInterpretations++;
         }
+        if (p.trace) p.trace.profileAfterModel = copyProfile(p.profile!);
         this.push({
           kind: "interpret",
           text: `"${p.note}" → ${p.status === "waiting" ? "refined before pickup" : "read after pickup; no route change"}`,
@@ -107,7 +129,14 @@ export class Column {
       .catch(() => {
         // Timeouts do not erase explicit bed/emergency facts or stop the cars.
         this.fallbacks++;
+        if (p.trace) {
+          p.trace.modelStatus = "fallback";
+          p.trace.modelCompletedAt = this.now;
+          p.trace.modelAppliedBeforePickup = false;
+          p.trace.profileBeforeModel = copyProfile(p.profile!);
+        }
         if (p.status === "waiting") p.profile = { ...p.profile!, tags: [...p.profile!.tags, "model unavailable"] };
+        if (p.trace) p.trace.profileAfterModel = copyProfile(p.profile!);
       })
       .finally(() => {
         this.pendingInterps--;
@@ -125,6 +154,7 @@ export class Column {
     if (cannotServe) {
       car.assigned = others;
       p.car = undefined;
+      this.traceEvent(p, { kind: "reroute", car: car.id, message: "模型更新后的容量或优先级约束与原分配不兼容，等待重新派梯" });
       return;
     }
     if (profile.exclusive) car.exclusiveFor = p.id;
@@ -150,6 +180,7 @@ export class Column {
         car.assigned = car.assigned.filter((assigned) => assigned !== id);
         if (car.exclusiveFor === id) car.exclusiveFor = undefined;
         p.car = undefined;
+        this.traceEvent(p, { kind: "reroute", car: car.id, message: "收到故障报告，尚未上梯的紧急或专梯请求重新分配" });
         this.push({ kind: "bump", text: `Re-routed "${p.note}" off ${carName(car.id)} after a fault report` });
       }
       this.push({ kind: "event", text: `"${text}" → ${carName(e.car)} limited to routine traffic` });
@@ -215,15 +246,37 @@ export class Column {
   private dispatch(p: Passenger) {
     const prof = p.profile!;
     let best: { car: Car; cost: number; bump: number[] } | undefined;
+    const candidates: DispatchCandidateTrace[] = [];
     for (const car of this.cars) {
-      if (car.id === p.blockedCar && this.now < (p.blockedUntil ?? 0)) continue;
+      const candidate: DispatchCandidateTrace = {
+        car: car.id, position: car.pos, eligible: false, selected: false, displacedPassengerIds: [],
+      };
+      candidates.push(candidate);
+      if (car.id === p.blockedCar && this.now < (p.blockedUntil ?? 0)) {
+        candidate.rejection = "recent_capacity_failure";
+        continue;
+      }
       const plan = this.smart
         ? this.smartFeasible(car, p, prof)
-        : { ok: this.loadUnits(car) + prof.units <= CAR_CAPACITY, bump: [] as number[] };
-      if (!plan.ok) continue;
-      const cost = this.cost(car, p, prof, plan.bump);
-      if (!best || cost < best.cost) best = { car, cost, bump: plan.bump };
+        : { ok: this.loadUnits(car) + prof.units <= CAR_CAPACITY, bump: [] as number[], rejection: "insufficient_capacity" as const };
+      if (!plan.ok) {
+        candidate.rejection = plan.rejection;
+        continue;
+      }
+      const score = this.cost(car, p, prof, plan.bump);
+      candidate.eligible = true;
+      candidate.score = score;
+      candidate.displacedPassengerIds = [...plan.bump];
+      if (!best || score.total < best.cost) best = { car, cost: score.total, bump: plan.bump };
     }
+    if (best) candidates[best.car.id].selected = true;
+    this.traceAssignment(p, {
+      at: this.now,
+      car: best?.car.id ?? null,
+      basis: p.trace?.modelStatus === "success" ? "model" : p.trace?.modelStatus === "fallback" ? "fallback" : this.interpret ? "provisional" : "rules",
+      profile: copyProfile(prof),
+      candidates,
+    });
     if (!best) return; // nothing suitable right now; retry next tick
 
     const { car, bump } = best;
@@ -231,6 +284,7 @@ export class Column {
       const other = this.passengers.get(id)!;
       car.assigned = car.assigned.filter((x) => x !== id);
       other.car = undefined;
+      this.traceEvent(other, { kind: "reroute", car: car.id, message: "急救请求需要空梯，尚未上梯的原请求重新分配" });
       this.push({ kind: "bump", text: `Re-routed "${other.note}" off ${carName(car.id)} to clear it for STAT` });
     }
     car.assigned.push(p.id);
@@ -249,12 +303,12 @@ export class Column {
     });
   }
 
-  private smartFeasible(car: Car, p: Passenger, prof: Profile): { ok: boolean; bump: number[] } {
-    const no = { ok: false, bump: [] };
-    if (car.exclusiveFor !== undefined) return no;
+  private smartFeasible(car: Car, p: Passenger, prof: Profile): { ok: boolean; bump: number[]; rejection?: DispatchRejection } {
+    const no = (rejection: DispatchRejection) => ({ ok: false, bump: [], rejection });
+    if (car.exclusiveFor !== undefined) return no("exclusive_car");
     // A faulty car still carries routine traffic, but never critical patients.
-    if (car.avoided && (prof.priority === "stat" || prof.priority === "urgent" || prof.exclusive)) return no;
-    if (car.reservedFloor !== undefined && prof.priority !== "stat") return no;
+    if (car.avoided && (prof.priority === "stat" || prof.priority === "urgent" || prof.exclusive)) return no("faulty_for_priority");
+    if (car.reservedFloor !== undefined && prof.priority !== "stat") return no("reserved_for_emergency");
 
     const occupants = this.occupants(car);
     if (prof.exclusive) {
@@ -264,17 +318,17 @@ export class Column {
       // Reserve the next empty trip now instead of waiting to notice an empty
       // car. Its current riders are delivered before this exclusive pickup.
       if (car.assigned.length === 0) return { ok: true, bump: [] };
-      return no;
+      return no("exclusive_trip_conflict");
     }
 
-    if (this.loadUnits(car) + prof.units > CAR_CAPACITY) return no;
+    if (this.loadUnits(car) + prof.units > CAR_CAPACITY) return no("insufficient_capacity");
     return { ok: true, bump: [] };
   }
 
   // Estimated time for the car to reach the pickup, plus the delay the new stop
   // imposes on everyone already on the car. The smart dispatcher weighs that
   // delay by priority; the baseline counts every passenger the same.
-  private cost(car: Car, p: Passenger, prof: Profile, bump: number[]) {
+  private cost(car: Car, p: Passenger, prof: Profile, bump: number[]): DispatchScore {
     const bumped = new Set(bump);
     const eta = this.smart && prof.exclusive && car.riders.length > 0
       ? this.emptyCarEta(car, p.from)
@@ -287,7 +341,11 @@ export class Column {
     // A car held for an incoming emergency is the right one for that emergency.
     const reservedBonus = car.reservedFloor === p.from && prof.priority === "stat" ? 30 : 0;
     const faultPenalty = car.avoided ? FAULT_DWELL : 0;
-    return eta + disruption + faultPenalty + bump.length * 5 - reservedBonus;
+    const reassignmentPenalty = bump.length * 5;
+    return {
+      eta, disruption, faultPenalty, reassignmentPenalty, reservationBonus: reservedBonus,
+      total: eta + disruption + faultPenalty + reassignmentPenalty - reservedBonus,
+    };
   }
 
   private emptyCarEta(car: Car, floor: number) {
@@ -378,6 +436,7 @@ export class Column {
       const p = this.passengers.get(id)!;
       p.status = "done";
       p.droppedAt = this.now;
+      this.traceEvent(p, { kind: "dropoff", car: car.id, message: "已到达目的楼层" });
       if (car.exclusiveFor === id) car.exclusiveFor = undefined;
     }
     car.riders = car.riders.filter((id) => this.passengers.get(id)!.status !== "done");
@@ -398,12 +457,14 @@ export class Column {
         p.wastedTrips++;
         this.wastedTrips++;
         if (car.exclusiveFor === p.id) car.exclusiveFor = undefined;
+        this.traceEvent(p, { kind: "capacity-failure", car: car.id, message: "电梯到达后实际空间不足，保留请求并重新派梯" });
         this.push({ kind: "wasted", text: `${carName(car.id)} arrived too full: "${p.note}" left behind` });
         continue;
       }
       car.riders.push(p.id);
       p.status = "riding";
       p.pickedAt = this.now;
+      this.traceEvent(p, { kind: "pickup", car: car.id, message: "已上梯，后续模型结果仅作记录" });
     }
     car.doorTimer = DOOR_DWELL + (car.faulty ? FAULT_DWELL : 0);
   }
@@ -437,6 +498,22 @@ export class Column {
   private push(d: Omit<Decision, "at">) {
     this.log.unshift({ at: this.now, ...d });
     if (this.log.length > MAX_LOG) this.log.length = MAX_LOG;
+  }
+
+  private traceAssignment(p: Passenger, entry: AssignmentTrace) {
+    if (!p.trace) return;
+    const history = p.trace.assignments;
+    // A queue can have no suitable car for many simulation ticks. Keep the most
+    // recent pending evaluation without filling the history with identical waits.
+    if (entry.car === null && history[history.length - 1]?.car === null) history[history.length - 1] = entry;
+    else history.push(entry);
+    if (history.length > MAX_ASSIGNMENT_TRACE) history.shift();
+  }
+
+  private traceEvent(p: Passenger, entry: Omit<TraceEvent, "at">) {
+    if (!p.trace) return;
+    p.trace.events.push({ at: this.now, ...entry });
+    if (p.trace.events.length > MAX_EVENT_TRACE) p.trace.events.shift();
   }
 
   // --- Metrics ------------------------------------------------------------------

@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
 import { requestEvidence } from "../src/lib/jev/requestEvidence";
-import { interpretRequest } from "../src/lib/jev/interpretRequest";
+import { interpretRequest, type RequestModelInput } from "../src/lib/jev/interpretRequest";
 
 test("direct evidence respects negation, ordinary staff, and equipment capacity", () => {
   assert.deepEqual(requestEvidence("resident going to pharmacy"), { priority: "routine", load: "walking", exclusive: false, people: 1 });
@@ -29,9 +29,12 @@ test("model adapter validates, guards, deduplicates, caches, and cancels unused 
   let upstreamAborts = 0;
   let malformed = false;
   let strong = false;
+  let lastModelInput: RequestModelInput | undefined;
   globalThis.fetch = async (_url, init) => {
     requests++;
     assert.ok(!String(init?.body).includes("Floor 4: ICU"), "floor labels must not contaminate classification");
+    const payload = JSON.parse(String(init?.body));
+    lastModelInput = { state: payload.state, questions: payload.questions };
     await new Promise<void>((resolve, reject) => {
       const signal = init?.signal;
       const timer = setTimeout(() => { signal?.removeEventListener("abort", cancel); resolve(); }, 30);
@@ -58,9 +61,17 @@ test("model adapter validates, guards, deduplicates, caches, and cancels unused 
     assert.equal(guarded.raw?.priority, "urgent");
     assert.equal(guarded.source, "model+guardrails");
     assert.equal(guarded.cache, "miss");
+    assert.deepEqual(guarded.modelInput, lastModelInput, "trace contains the actual model state and questions");
+    assert.deepEqual(Object.keys(guarded.modelInput!).sort(), ["questions", "state"], "trace does not expose transport configuration");
+    assert.deepEqual(Object.keys(guarded.modelInput!.state), ["note"], "floors and scoring truth are not model input");
     const cached = await interpretRequest({ ...req, from: 2, to: 9 });
     assert.equal(cached.cache, "hit");
     assert.equal(cached.inputTokens, 0);
+    assert.deepEqual(cached.modelInput, guarded.modelInput, "cached responses retain the original model input");
+    assert.equal(cached.modelLatencyMs, guarded.modelLatencyMs, "cached responses retain cold-call model latency");
+    cached.modelInput!.state.note = "client changed its own copy";
+    const cachedAgain = await interpretRequest(req);
+    assert.equal(cachedAgain.modelInput!.state.note, req.note, "client inspection cannot mutate stored trace provenance");
     assert.equal(requests, 1, "note-only semantics permits reuse across floor pairs");
 
     const controller = new AbortController();
@@ -72,6 +83,7 @@ test("model adapter validates, guards, deduplicates, caches, and cancels unused 
     await abortAssertion;
     const shared = await surviving;
     assert.equal(shared.cache, "shared");
+    assert.deepEqual(shared.modelInput, lastModelInput, "shared subscribers see the actual original model input");
     assert.equal(requests, 2);
     assert.equal(upstreamAborts, 0, "one subscriber must not cancel another's request");
 
@@ -100,6 +112,10 @@ test("model adapter validates, guards, deduplicates, caches, and cancels unused 
     assert.equal(contextual.priority, "routine", "a clear model result outranks generic keyword evidence");
     assert.equal(contextual.load, "walking");
     assert.equal(contextual.exclusiveCar, 0, "stale lexical emergency evidence must not reserve a car");
+
+    const normalized = await interpretRequest({ ...req, note: "w/c patient going for a scheduled check" });
+    assert.equal(normalized.modelInput!.state.note, "wheelchair patient going for a scheduled check");
+    assert.deepEqual(normalized.modelInput, lastModelInput, "displayed normalization exactly matches the outbound request");
 
     malformed = true;
     await assert.rejects(interpretRequest({ ...req, note: "an unfamiliar trip" }), /invalid choice/);

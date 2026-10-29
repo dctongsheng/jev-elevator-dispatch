@@ -44,6 +44,18 @@ Jev never picks the elevator or does arithmetic. **Jev supplies the meaning; the
 
 ## Measuring the current harness
 
+### Inspecting StartLux decisions in the browser
+
+The interface defaults to **English**. Use the **English / 简体中文** selector in the top right to switch instantly; the preference is saved in this browser. The page heading and browser tab show **Elevator Sense** in English and **智能电梯调度** in Chinese. Switching languages preserves the running simulation, metrics, event input, and decision feed. Floor labels, sample request summaries, details, and recorded actions are localized for display; actual model inputs, original request text, and raw JSON remain unchanged.
+
+The desktop dashboard fits one screen: comparison metrics, both elevator banks, and event controls sit on the left; **StartLux 实时决策** streams the latest 40 requests on the right. New requests pop in at the top and smoothly push older cards downward, without scrolling the panel. Model results update in place. Scroll down to browse a frozen window of older records; a new-decision count appears while arrivals continue. Click **Show latest / 回到最新** to return to the live stream. On smaller screens the panels stack vertically.
+
+Each card summarizes the request, route, priority, load, dedicated-car recommendation, actual assigned car, and response status. Click it to open a separate, scrollable dialog with the exact model input, raw scores and confidence, harness corrections, and the constraints actually applied. The selected record stays open while new requests arrive. Cache hits, shared responses, failures, and results arriving after pickup are explicitly labeled.
+
+The car-selection table records A–D eligibility, exclusion reasons, and the ETA/disruption/penalty calculation from the actual dispatch step. StartLux supplies structured judgments; the dispatcher calculates these scores and selects the car. Historical assignments remain visible if a request is rerouted. These records show observable inputs and outputs, not a generated explanation of hidden model reasoning. Event results also expose the model classification and the actual dispatch actions.
+
+![Single-screen comparison and live StartLux decision feed](docs/startlux-live-dashboard.jpg)
+
 See the [2026-10-29 validation report](docs/validation-2026-10-29.md) for actual provider results, independent traffic seeds, live browser verification, model-versus-rules attribution, and remaining regressions.
 
 `npm run evaluate -- all` records real model answers, then replays their measured latency with a running simulation clock over seeds 101–116. It compares baseline, evidence-only rules, full harness at 1×/10×, cold requests, slow responses, and complete model outage. Physical events are fixed independently of model answers. Every per-seed regression is retained; final completed-request metrics are included after draining the queues. `npm run evaluate` repeats the replay from the saved recordings and rejects stale interpreter hashes.

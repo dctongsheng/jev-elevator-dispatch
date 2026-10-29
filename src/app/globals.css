@@ -12,3 +12,52 @@
 body {
   font-family: var(--font-geist-sans), system-ui, sans-serif;
 }
+
+.dashboard-shell {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+  min-height: 100dvh;
+  padding: 16px;
+}
+
+.dashboard-main, .simulation-workspace, .elevator-comparison {
+  display: grid;
+  gap: 12px;
+  min-width: 0;
+  min-height: 0;
+}
+
+.elevator-comparison { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.bank-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+  min-height: 0;
+  padding: 12px;
+  border-width: 1px;
+  border-radius: 12px;
+}
+.bank-visual { flex: 1; min-height: 0; }
+.decision-sidebar { height: 660px; min-width: 0; min-height: 0; }
+
+@media (min-width: 1024px) {
+  .dashboard-shell { height: 100dvh; min-height: 0; overflow: hidden; }
+  .dashboard-main {
+    flex: 1;
+    grid-template-columns: minmax(0, 1fr) clamp(360px, 31vw, 480px);
+  }
+  .simulation-workspace {
+    grid-template-rows: auto minmax(180px, 1fr) auto auto auto;
+    overflow-y: auto;
+  }
+  .decision-sidebar { height: auto; overflow: hidden; }
+}
+
+@media (max-width: 639px) {
+  .dashboard-shell { padding: 12px; }
+  .elevator-comparison { grid-template-columns: minmax(0, 1fr); }
+  .bank-visual { aspect-ratio: 388 / 260; }
+}

@@ -13,14 +13,17 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Elevator Sense",
-  description: "Hospital elevator dispatch that understands what's waiting, powered by Jev.",
+  description: "Compare hospital elevator dispatch in real time and follow StartLux judgments and dispatch decisions.",
+  // The app supplies both languages; browser translation would rewrite live
+  // React text and obscure the user's selected language.
+  other: { google: "notranslate" },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
+      translate="no"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-zinc-950 text-zinc-100">{children}</body>

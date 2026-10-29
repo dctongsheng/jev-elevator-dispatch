@@ -37,10 +37,67 @@ export interface Profile {
 
 export type PassengerStatus = "interpreting" | "waiting" | "riding" | "done";
 
+export type DispatchRejection =
+  | "recent_capacity_failure"
+  | "exclusive_car"
+  | "faulty_for_priority"
+  | "reserved_for_emergency"
+  | "exclusive_trip_conflict"
+  | "insufficient_capacity";
+
+export interface DispatchScore {
+  eta: number;
+  disruption: number;
+  faultPenalty: number;
+  reassignmentPenalty: number;
+  reservationBonus: number;
+  total: number;
+}
+
+export interface DispatchCandidateTrace {
+  car: number;
+  position: number;
+  eligible: boolean;
+  selected: boolean;
+  rejection?: DispatchRejection;
+  score?: DispatchScore;
+  displacedPassengerIds: number[];
+}
+
+export interface AssignmentTrace {
+  at: number;
+  car: number | null;
+  basis: "provisional" | "model" | "fallback" | "rules";
+  profile: Profile;
+  candidates: DispatchCandidateTrace[];
+}
+
+export interface TraceEvent {
+  at: number;
+  kind: "reroute" | "capacity-failure" | "pickup" | "dropoff";
+  car?: number;
+  message: string;
+}
+
+// Observation-only snapshots: each profile and candidate list is copied at the
+// actual decision point. These values are never inputs to scoring or routing.
+export interface PassengerTrace {
+  initialProfile: Profile;
+  modelStatus: "not-requested" | "pending" | "success" | "fallback";
+  modelCompletedAt?: number;
+  modelAppliedBeforePickup?: boolean;
+  profileBeforeModel?: Profile;
+  modelProfile?: Profile;
+  profileAfterModel?: Profile;
+  assignments: AssignmentTrace[];
+  events: TraceEvent[];
+}
+
 export interface Passenger extends Arrival {
   status: PassengerStatus;
   profile?: Profile;
   interp?: RequestInterpretation;
+  trace?: PassengerTrace;
   car?: number;
   pickedAt?: number;
   droppedAt?: number;
